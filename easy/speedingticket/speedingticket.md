@@ -93,7 +93,3 @@ Arrays are sized exactly to 100 because the road is guaranteed to be that length
 Speed is processed per mile for accurate comparison.
 
 Happy cow ticketing!
-
-css
-Copy
-Edit
