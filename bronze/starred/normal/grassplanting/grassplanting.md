@@ -56,14 +56,14 @@ g++ -std=c++17 -O2 -o planting planting.cpp
 ./planting < planting.in > planting.out
 Or submit it to the USACO grader and wait for your participation ribbon.
 ```
-🧠 Time Complexity
+## 🧠 Time Complexity
 Reading and processing: O(N)
 
 Finding max degree: O(N)
 
 Total: O(N) — Efficient even if Farmer John suddenly decides to build 100,000 fields because therapy is expensive.
 
-🌾 Notes
+## 🌾 Notes
 The solution uses freopen-style file I/O, as required by USACO.
 
 No fancy data structures needed — just arrays, vectors, and the crushing weight of algorithmic inevitability.
