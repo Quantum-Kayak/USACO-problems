@@ -196,37 +196,22 @@ bronze arrays brute-force sim rage-minor
 ``` cpp
 #include <iostream>
 #include <fstream>
-#include <vector>
-#include <algorithm>
-
 using namespace std;
 
-#define ll long long
-#define pb push_back
-#define f first
-#define s second
-#define all(x) x.begin(), x.end()
-
-int main() {
+void setIO(const string &name) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
-    ifstream fin("input.in");
-    ofstream fout("output.out");
-
-    int n;
-    fin >> n;
-    vector<int> arr(n);
-    for (int i = 0; i < n; ++i) {
-        fin >> arr[i];
+    if (!name.empty()) {
+        freopen((name + ".in").c_str(), "r", stdin);
+        freopen((name + ".out").c_str(), "w", stdout);
     }
+}
 
-    sort(all(arr));
-
-    for (int x : arr) {
-        fout << x << '\n';
-    }
-
+int main() {
+    setIO("test"); 
+    
     return 0;
 }
+
+
 ```
