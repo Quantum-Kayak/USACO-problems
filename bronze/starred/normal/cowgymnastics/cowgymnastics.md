@@ -73,14 +73,14 @@ g++ -std=c++17 -o gymnastics gymnastics.cpp
 ./gymnastics < gymnastics.in > gymnastics.out
 Or submit it to USACO and let the grader bask in your cow-ranking logic.
 ```
-🧠 Time Complexity
+## 🧠 Time Complexity
 Parsing sessions: O(K × N)
 
 Comparing all cow pairs across sessions: O(N^2 × K)
 
 Total: O(N^2 × K) — totally manageable for N ≤ 20.
 
-🫠 Notes
+## 🫠 Notes
 Uses freopen to handle .in and .out file redirection (USACO-style).
 
 Indexes cows from 1 to N for clarity and alignment with problem constraints.
