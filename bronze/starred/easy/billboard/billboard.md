@@ -21,10 +21,6 @@ You are given a string of `n` uppercase letters (1 ≤ n ≤ 100), and your task
 4
 ABCA
 
-yaml
-Copy
-Edit
-
 ---
 
 ## 📤 Output
@@ -33,10 +29,6 @@ A single integer: the minimum `k` for which all substrings of length `k` are uni
 
 **Example:**
 3
-
-yaml
-Copy
-Edit
 
 ---
 
@@ -68,7 +60,7 @@ g++ -std=c++17 -o whereami whereami.cpp
 ./whereami < whereami.in > whereami.out
 Or just let USACO’s judge do it for you and pretend it was easy.
 ```
-🧠 Time Complexity
+## 🧠 Time Complexity
 Outer loop over k: O(n)
 
 Inner loop to extract substrings: O(n)
@@ -77,12 +69,7 @@ Each substring check uses hashing: ~O(1) average
 
 Total: O(n²) — perfectly acceptable for small inputs like these.
 
-🫠 Notes
+## 🫠 Notes
 This code uses freopen to handle file I/O, as required by USACO problems
 
 If you’re new to C++, the unordered_set helps us check for duplicates quickly and painlessly (emotionally debatable)
-
-vbnet
-Copy
-Edit
-
