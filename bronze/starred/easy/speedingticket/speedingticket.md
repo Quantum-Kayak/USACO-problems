@@ -29,10 +29,6 @@ Your task is to determine how badly Bessie breaks the speed limit — specifical
 50 35
 10 40
 
-yaml
-Copy
-Edit
-
 ---
 
 ### 📤 Output
@@ -41,10 +37,6 @@ A single integer — the maximum amount by which Bessie exceeds the speed limit 
 
 **Example:**
 1
-
-yaml
-Copy
-Edit
 
 ---
 
@@ -78,14 +70,14 @@ g++ -std=c++17 -o speedingticket speedingticket.cpp
 ./speedingticket < speedingticket.in > speedingticket.out
 Or just submit it to the USACO judge and pretend the compiler whispered you the answer.
 ```
-🧠 Time Complexity
+## 🧠 Time Complexity
 Reading & expanding segments: O(n + m)
 
 Max overspeed comparison: O(100)
 
 Total: O(n + m) — smooth and efficient for Bronze problems.
 
-🫠 Notes
+## 🫠 Notes
 This solution uses freopen for file redirection (.in / .out) as required by USACO submissions.
 
 Arrays are sized exactly to 100 because the road is guaranteed to be that length.
