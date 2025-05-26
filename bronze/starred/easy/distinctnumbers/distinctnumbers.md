@@ -68,7 +68,7 @@ g++ -std=c++17 -o distinctnumbers distinctnumbers.cpp
 ./distinctnumbers
 Type the input, hit enter, and bask in the glory of basic set operations.
 ```
-🧠 Time Complexity
+### 🧠 Time Complexity
 Insertions into a set: O(log n) per item (if using set)
 or O(1) average (if using unordered_set)
 
