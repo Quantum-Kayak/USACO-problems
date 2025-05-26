@@ -104,8 +104,10 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 # USACO template🐮
 
 ``` cpp
-#include <iostream>
-#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <string>
 using namespace std;
 
 void setIO(const string &name) {
@@ -116,6 +118,12 @@ void setIO(const string &name) {
         freopen((name + ".out").c_str(), "w", stdout);
     }
 }
+
+#define pb push_back
+#define f first
+#define s second
+#define all(x) x.begin(), x.end()
+typedef long long ll;
 
 int main() {
     setIO("test"); 
