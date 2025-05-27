@@ -104,10 +104,7 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 # USACO template🐮
 
 ``` cpp
-#include <vector>
-#include <algorithm>
-#include <cmath>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 void setIO(const string &name) {
