@@ -1,42 +1,48 @@
-#include <bits/stdc++.h>
+#include <iostream>     // cin, cout
+#include <vector>       // vector<>
+#include <string>       // string, substr, etc.
+#include <set>          // set, unordered_set if needed
+#include <algorithm>    // sort, min, max, etc.
+
 using namespace std;
 
-void setIO(const string &name) {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    if (!name.empty()) {
-        freopen((name + ".in").c_str(), "r", stdin);
-        freopen((name + ".out").c_str(), "w", stdout);
-    }
-}
-
 int main() {
-    setIO("gymnastics");
+    ios::sync_with_stdio(false); 
+    cin.tie(nullptr);
+    #define PROBLEM_NAME "gymnastics"
+    freopen((string(PROBLEM_NAME) + ".in").c_str(), "r", stdin);
+    freopen((string(PROBLEM_NAME) + ".out").c_str(), "w", stdout);
+    
     int K, N;
     cin >> K >> N;
-    vector<vector<int>> ranks(K, vector<int>(N));
-    for (int i = 0; i < K; i++) {
-        for (int j = 0; j < N; j++) {
-            cin >> ranks[i][j];
+    vector<vector<int>> sessions(K, vector<int>(N));
+    vector<vector<int>> position(K, vector<int>(N + 1));
+    for (int k = 0; k < K; ++k) {
+        for (int rank = 0; rank < N; ++rank) {
+            int cow;
+            cin >> cow;
+            sessions[k][rank] = cow;
+            position[k][cow] = rank;
         }
     }
-
-    int tot = 0;
-    for (int i = 1; i <= N; i++) {
-        for (int j = 1; j <= N; j++) {
-            if (i == j) continue;
-            bool i_better = true;
-            for (int s = 0; s < K; s++) {
-                int pos_i = find(ranks[s].begin(), ranks[s].end(), i) - ranks[s].begin();
-                int pos_j = find(ranks[s].begin(), ranks[s].end(), j) - ranks[s].begin();
-                if (pos_i > pos_j) {
-                    i_better = false;
+    int count = 0;
+    
+    for (int a = 1; a <= N; ++a) {
+        for (int b = 1; b <= N; ++b) {
+            if (a == b) continue;
+    
+            bool consistent = true;
+    
+            for (int k = 0; k < K; ++k) {
+                if (position[k][a] > position[k][b]) {
+                    consistent = false;
                     break;
                 }
             }
-            if (i_better) tot++;
+    
+            if (consistent) count++;
         }
     }
-    cout << tot << endl;
+    cout << count << endl;
     return 0;
 }
