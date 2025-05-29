@@ -1,4 +1,4 @@
-# 🐄 Problem Name – USACO Bronze (January 2021)
+# 🐄 Photo Shoot – USACO Bronze (January 2021)
 
 This directory contains a C++ solution to the **"Reversing Cows"** problem from the USACO Bronze division.
 
