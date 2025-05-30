@@ -107,7 +107,8 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 #include <bits/stdc++.h>
 using namespace std;
 
-void setIO(const string &name) {
+// Fast IO for USACO file problems
+void setIO(const string& name = "") {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     if (!name.empty()) {
@@ -116,19 +117,26 @@ void setIO(const string &name) {
     }
 }
 
+// Type aliases
+using ll = long long;
+using vi = vector<int>;
+using vll = vector<ll>;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+
+// Helpful macros
 #define pb push_back
-#define f first
-#define s second
 #define all(x) x.begin(), x.end()
-#define maxe max_element
-#define mine min_element
-typedef long long ll;
+
+// Debugging helper (turn off before submission!)
+#define dbg(x) cerr << #x << " = " << (x) << endl;
 
 int main() {
-    setIO("test"); 
+    setIO("test"); // Change to your problem's file name
     
     return 0;
 }
+
 
 
 ```
