@@ -120,6 +120,8 @@ void setIO(const string &name) {
 #define f first
 #define s second
 #define all(x) x.begin(), x.end()
+#define maxe max_element
+#define mine min_element
 typedef long long ll;
 
 int main() {
