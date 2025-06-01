@@ -123,6 +123,7 @@ using vi = vector<int>;
 using vll = vector<ll>;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
+using vb = vector<bool>;
 
 // Helpful macros
 #define pb push_back
