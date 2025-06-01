@@ -104,7 +104,21 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 # USACO template🐮
 
 ``` cpp
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+#include <climits>
+#include <string>
+#include <set>
+#include <map>
+#include <unordered_set>
+#include <unordered_map>
+#include <stack>
+#include <deque>
+#include <bitset>
+#include <cmath>
+
 using namespace std;
 
 // Fast IO for USACO file problems
