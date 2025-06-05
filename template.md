@@ -137,6 +137,9 @@ using vb = vector<bool>;
 using vpi = vector<pii>;
 using vpl = vector<pll>;
 
+typedef pair<int, int> Edge;
+typedef vector<vector<Edge>> Graph;
+
 // Constants
 const ll INF = 1e18;
 const int MX = 2e5 + 5;   // adjust per problem constraints
