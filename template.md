@@ -107,21 +107,41 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
+#include <deque>
 #include <algorithm>
-#include <climits>
-#include <string>
 #include <set>
 #include <map>
 #include <unordered_set>
 #include <unordered_map>
-#include <stack>
-#include <deque>
-#include <bitset>
+#include <string>
 #include <cmath>
+#include <climits>
+#include <iomanip>
+#include <cassert>
+#include <fstream>
+#include <bitset>
+#include <numeric>
 
 using namespace std;
 
-// Fast IO for USACO file problems
+// Type aliases
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+using vi = vector<int>;
+using vll = vector<ll>;
+using vb = vector<bool>;
+using vpi = vector<pii>;
+using vpl = vector<pll>;
+
+// Constants
+const ll INF = 1e18;
+const int MX = 2e5 + 5;   // adjust per problem constraints
+
+// Fast IO
 void setIO(const string& name = "") {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -131,28 +151,21 @@ void setIO(const string& name = "") {
     }
 }
 
-// Type aliases
-using ll = long long;
-using vi = vector<int>;
-using vll = vector<ll>;
-using pii = pair<int, int>;
-using pll = pair<ll, ll>;
-using vb = vector<bool>;
+// Debug (remove or disable before submitting)
+#define dbg(x) cerr << #x << " = " << (x) << '\n';
+#define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n';
 
-// Helpful macros
+// Macros
 #define pb push_back
 #define all(x) x.begin(), x.end()
-
-// Debugging helper (turn off before submission!)
-#define dbg(x) cerr << #x << " = " << (x) << endl;
+#define f first
+#define s second
 
 int main() {
-    setIO("test"); // Change to your problem's file name
+    setIO("test");  // Replace with actual filename
     
     return 0;
 }
-
-
 
 ```
 # file is in C:\Users\icody\USACO-problems
