@@ -1,6 +1,6 @@
 # whereami – USACO Bronze Problem (January 2019)
 
-This repository contains a C++ solution to the **"Where Am I?"** problem from the USACO Bronze division.
+This file contains a C++ solution to the **"Where Am I?"** problem from the USACO Bronze division.
 
 ---
 
