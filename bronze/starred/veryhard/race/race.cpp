@@ -24,8 +24,7 @@ int main() {
         cin >> X;
 
         int min_time = INT_MAX;
-
-        // Case 1: If distance is small enough, just accelerate to some peak ≤ X
+        
         if (tot_dis <= (ll)X * (X + 1) / 2) {
             int speed = 0, dis = 0, time_ = 0;
             while (dis < tot_dis) {
@@ -35,20 +34,17 @@ int main() {
             }
             min_time = time_;
         } else {
-            // Case 2: Need to go beyond X, peak > X
-            for (int peak_speed = X; peak_speed <= 100000; peak_speed++) {
+            for (int peak_speed = X; peak_speed <= 2 * tot_dis; peak_speed++) {
                 ll dis = 0;
                 int speed = 0;
                 int time_ = 0;
 
-                // Accelerate
                 while (speed < peak_speed) {
                     speed++;
                     dis += speed;
                     time_++;
                 }
 
-                // Decelerate
                 int tmp_speed = peak_speed;
                 while (tmp_speed > X) {
                     tmp_speed--;
@@ -58,7 +54,6 @@ int main() {
 
                 if (dis > tot_dis) continue;
 
-                // Cruise if needed
                 ll remaining_dis = tot_dis - dis;
                 if (remaining_dis > 0) {
                     time_ += (remaining_dis + peak_speed - 1) / peak_speed;
