@@ -157,13 +157,21 @@ void setIO(const string& name = "") {
 #define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n'
 
 // Debug for vectors
+template <typename A, typename B>
+ostream& operator<<(ostream& os, const pair<A, B>& p) {
+    return os << "(" << p.first << ", " << p.second << ")";
+}
+
 template <typename T>
 ostream& operator<<(ostream& os, const vector<T>& v) {
     os << "[";
-    for (int i = 0; i < (int)v.size(); i++)
+    for (int i = 0; i < (int)v.size(); ++i)
         os << v[i] << (i + 1 == (int)v.size() ? "" : ", ");
     return os << "]";
 }
+
+#define dbg(x) cerr << #x << " = " << (x) << '\n'
+
 
 // Binary Search Helpers
 template <typename T>
