@@ -125,7 +125,7 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 
 using namespace std;
 
-// Type aliases
+// Type Aliases
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;
@@ -137,14 +137,11 @@ using vb = vector<bool>;
 using vpi = vector<pii>;
 using vpl = vector<pll>;
 
-typedef pair<int, int> Edge;
-typedef vector<vector<Edge>> Graph;
-
 // Constants
 const ll INF = 1e18;
-const int MX = 2e5 + 5;   // adjust per problem constraints
+const int MX = 2e5 + 5;
 
-// Fast IO
+// Fast IO for USACO
 void setIO(const string& name = "") {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -154,21 +151,41 @@ void setIO(const string& name = "") {
     }
 }
 
-// Debug (remove or disable before submitting)
-#define dbg(x) cerr << #x << " = " << (x) << '\n';
-#define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n';
+// Debugging Macros
+#define dbg(x) cerr << #x << " = " << (x) << '\n'
+#define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n'
 
-// Macros
+// Debug for vectors
+template <typename T>
+ostream& operator<<(ostream& os, const vector<T>& v) {
+    os << "[";
+    for (int i = 0; i < (int)v.size(); i++)
+        os << v[i] << (i + 1 == (int)v.size() ? "" : ", ");
+    return os << "]";
+}
+
+// Binary Search Helpers
+template <typename T>
+int lb(const vector<T>& v, T val) {
+    return lower_bound(v.begin(), v.end(), val) - v.begin();
+}
+template <typename T>
+int ub(const vector<T>& v, T val) {
+    return upper_bound(v.begin(), v.end(), val) - v.begin();
+}
+
+// Shortcuts
 #define pb push_back
 #define all(x) x.begin(), x.end()
 #define f first
 #define s second
+#define sz(x) (int)(x).size()
+#define each(a, x) for (auto& a : x)
 
 int main() {
-    setIO("test");  // Replace with actual filename
+    setIO("test"); // Change filename as needed
     
     return 0;
 }
-
 ```
 # file is in C:\Users\icody\USACO-problems
