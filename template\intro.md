@@ -4,7 +4,8 @@ Welcome to my archive of solved USACO problems, organized for brutal clarity, lo
 
 - ✅ A `.cpp` file with the complete solution
 - 🧠 A `README.md` (or `.XN.md`) with an explanation, strategy breakdown, and mental notes
-- sometimes a `TLE.cpp` cause I was too slow
+- 🦥 Sometimes a `TLE.cpp` cause I was too slow
+- ⌚ Some problems will have multiple solutions as part of mock contests
 - 🗂 Sorted by **division**, **difficulty**, and **problem metadata**
 
 ---
