@@ -138,6 +138,7 @@ using vll = vector<ll>;
 using vb = vector<bool>;
 using vpi = vector<pii>;
 using vpl = vector<pll>;
+using vvi = vector<vi>;
 
 // Constants
 const ll INF = 1e18;
