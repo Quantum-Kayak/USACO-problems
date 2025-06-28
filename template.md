@@ -171,8 +171,13 @@ ostream& operator<<(ostream& os, const vector<T>& v) {
     return os << "]";
 }
 
-#define dbg(x) cerr << #x << " = " << (x) << '\n'
-
+template <typename T>
+ostream& operator<<(ostream& os, const set<T>& s) {
+    os << "{";
+    for (auto it = s.begin(); it != s.end(); ++it)
+        os << *it << (next(it) == s.end() ? "" : ", ");
+    return os << "}";
+}
 
 // Binary Search Helpers
 template <typename T>
