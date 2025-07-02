@@ -189,16 +189,6 @@ ll powmod(ll a,ll e,ll mod){ ll r=1; for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod; 
 /*****  pair hash for unordered_map / gp_hash_table  *****/
 struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32)^p.second; } };
 
-/***** Binary Search Helpers *****/
-template <typename T>
-int lb(const vector<T>& v, T val) {
-    return lower_bound(v.begin(), v.end(), val) - v.begin();
-}
-template <typename T>
-int ub(const vector<T>& v, T val) {
-    return upper_bound(v.begin(), v.end(), val) - v.begin();
-}
-
 /***** Shortcuts ******/
 #define pb push_back
 #define all(x) x.begin(), x.end()
