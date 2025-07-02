@@ -199,7 +199,7 @@ int ub(const vector<T>& v, T val) {
     return upper_bound(v.begin(), v.end(), val) - v.begin();
 }
 
-/***** Shortcuts /******
+/***** Shortcuts ******/
 #define pb push_back
 #define all(x) x.begin(), x.end()
 #define f first
