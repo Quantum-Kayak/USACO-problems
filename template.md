@@ -106,28 +106,18 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 # USACO template🐮
 
 ``` cpp
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <deque>
-#include <algorithm>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <string>
-#include <cmath>
-#include <climits>
-#include <iomanip>
-#include <cassert>
-#include <fstream>
-#include <bitset>
-#include <numeric>
-
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
 using namespace std;
+using namespace __gnu_pbds;
 
-// Type Aliases
+template<class Key, class Mapped=mapped_type>
+using hashTable = gp_hash_table<Key,Mapped>;
+
+template<class T>
+using minpq = priority_queue<T, vector<T>, greater<T>>;
+
+/*****  Aliases & typedefs  *****/
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;
@@ -140,23 +130,31 @@ using vpi = vector<pii>;
 using vpl = vector<pll>;
 using vvi = vector<vi>;
 
-// Constants
-const ll INF = 1e18;
-const int MX = 2e5 + 5;
+/*****  Constants  *****/
+constexpr ll  INF64 = (ll)4e18;        // ~2^62
+constexpr int INF32 = 1e9+7;
+constexpr int MX    = 2e5 + 5;
 
-// Fast IO for USACO
-void setIO(const string& name = "") {
+/*****  Fast IO  *****/
+void setIO(string name="") {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    if (!name.empty()) {
-        freopen((name + ".in").c_str(), "r", stdin);
-        freopen((name + ".out").c_str(), "w", stdout);
+#ifndef ONLINE_JUDGE           // disable on CF/AtCoder
+    if(!name.empty()){
+        freopen((name+".in").c_str(),"r",stdin);
+        freopen((name+".out").c_str(),"w",stdout);
     }
+#endif
 }
 
 // Debugging Macros
 #define dbg(x) cerr << #x << " = " << (x) << '\n'
 #define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n'
+#ifdef LOCAL
+  #define dbg(x) cerr<<#x<<"="<<(x)<<'\n'
+#else
+  #define dbg(x)
+#endif
 
 // Debug for vectors
 template <typename A, typename B>
@@ -180,7 +178,18 @@ ostream& operator<<(ostream& os, const set<T>& s) {
     return os << "}";
 }
 
-// Binary Search Helpers
+/*****  Helpers  *****/
+template<class T> inline bool chmin(T& a,const T& b){ return b<a ? a=b,1:0; }
+template<class T> inline bool chmax(T& a,const T& b){ return b>a ? a=b,1:0; }
+template<class T> int lb(const vector<T>& v,const T& x){ return lower_bound(v.begin(),v.end(),x)-v.begin(); }
+template<class T> int ub(const vector<T>& v,const T& x){ return upper_bound(v.begin(),v.end(),x)-v.begin(); }
+template<class T> T ceil_div(T a,T b){ return (a+b-1)/b; }
+ll powmod(ll a,ll e,ll mod){ ll r=1; for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod; return r; }
+
+/*****  pair hash for unordered_map / gp_hash_table  *****/
+struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32)^p.second; } };
+
+/***** Binary Search Helpers *****/
 template <typename T>
 int lb(const vector<T>& v, T val) {
     return lower_bound(v.begin(), v.end(), val) - v.begin();
@@ -190,7 +199,7 @@ int ub(const vector<T>& v, T val) {
     return upper_bound(v.begin(), v.end(), val) - v.begin();
 }
 
-// Shortcuts
+/***** Shortcuts /******
 #define pb push_back
 #define all(x) x.begin(), x.end()
 #define f first
