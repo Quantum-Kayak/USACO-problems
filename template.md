@@ -147,36 +147,75 @@ void setIO(string name="") {
 #endif
 }
 
-// Debugging Macros
-#define dbg(x) cerr << #x << " = " << (x) << '\n'
-#define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n'
+/*****  Debugging Tools  *****/
 #ifdef LOCAL
-  #define dbg(x) cerr<<#x<<"="<<(x)<<'\n'
+  #include <iostream>
+  using namespace std;
+
+  #define dbg(x) cerr << #x << " = " << (x) << '\n'
+  #define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n'
+  #define dbg3(x, y, z) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << ", " << #z << " = " << (z) << '\n'
+
+  template<typename T, typename... Args>
+  void debug_out(const T& first, const Args&... rest) {
+      cerr << first;
+      ((cerr << ", " << rest), ...);
+      cerr << '\n';
+  }
+
+  #define dbgv(...) cerr << "[" << #__VA_ARGS__ << "] = ", debug_out(__VA_ARGS__)
+
+  template <typename A, typename B>
+  ostream& operator<<(ostream& os, const pair<A, B>& p) {
+      return os << "(" << p.first << ", " << p.second << ")";
+  }
+
+  template <typename T>
+  ostream& operator<<(ostream& os, const vector<T>& v) {
+      os << "[";
+      for (int i = 0; i < (int)v.size(); ++i)
+          os << v[i] << (i + 1 == (int)v.size() ? "" : ", ");
+      return os << "]";
+  }
+
+  template <typename T>
+  ostream& operator<<(ostream& os, const set<T>& s) {
+      os << "{";
+      for (auto it = s.begin(); it != s.end(); ++it)
+          os << *it << (next(it) == s.end() ? "" : ", ");
+      return os << "}";
+  }
+
+  template <typename T>
+  ostream& operator<<(ostream& os, const unordered_set<T>& s) {
+      os << "{";
+      for (auto it = s.begin(); it != s.end(); ++it)
+          os << *it << (next(it) == s.end() ? "" : ", ");
+      return os << "}";
+  }
+
+  template <typename K, typename V>
+  ostream& operator<<(ostream& os, const map<K, V>& m) {
+      os << "{";
+      for (auto it = m.begin(); it != m.end(); ++it)
+          os << it->first << ": " << it->second << (next(it) == m.end() ? "" : ", ");
+      return os << "}";
+  }
+
+  template <typename K, typename V>
+  ostream& operator<<(ostream& os, const unordered_map<K, V>& m) {
+      os << "{";
+      for (auto it = m.begin(); it != m.end(); ++it)
+          os << it->first << ": " << it->second << (next(it) == m.end() ? "" : ", ");
+      return os << "}";
+  }
+
 #else
   #define dbg(x)
+  #define dbg2(x, y)
+  #define dbg3(x, y, z)
+  #define dbgv(...)
 #endif
-
-// Debug for vectors
-template <typename A, typename B>
-ostream& operator<<(ostream& os, const pair<A, B>& p) {
-    return os << "(" << p.first << ", " << p.second << ")";
-}
-
-template <typename T>
-ostream& operator<<(ostream& os, const vector<T>& v) {
-    os << "[";
-    for (int i = 0; i < (int)v.size(); ++i)
-        os << v[i] << (i + 1 == (int)v.size() ? "" : ", ");
-    return os << "]";
-}
-
-template <typename T>
-ostream& operator<<(ostream& os, const set<T>& s) {
-    os << "{";
-    for (auto it = s.begin(); it != s.end(); ++it)
-        os << *it << (next(it) == s.end() ? "" : ", ");
-    return os << "}";
-}
 
 /*****  Helpers  *****/
 template<class T> inline bool chmin(T& a,const T& b){ return b<a ? a=b,1:0; }
@@ -198,7 +237,7 @@ struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32
 #define each(a, x) for (auto& a : x)
 
 int main() {
-    setIO("test"); // Change filename as needed
+    setIO(); // Change filename as needed
     
     return 0;
 }
