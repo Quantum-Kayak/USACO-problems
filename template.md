@@ -111,9 +111,6 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 using namespace std;
 using namespace __gnu_pbds;
 
-template<class Key, class Mapped=mapped_type>
-using hashTable = gp_hash_table<Key,Mapped>;
-
 template<class T>
 using minpq = priority_queue<T, vector<T>, greater<T>>;
 
