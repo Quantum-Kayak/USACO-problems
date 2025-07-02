@@ -133,13 +133,23 @@ constexpr int INF32 = 1e9+7;
 constexpr int MX    = 2e5 + 5;
 
 /*****  Fast IO  *****/
-void setIO(string name="") {
+ifstream fin;
+ofstream fout;
+
+void setIO(string name = "") {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-#ifndef ONLINE_JUDGE           // disable on CF/AtCoder
-    if(!name.empty()){
-        freopen((name+".in").c_str(),"r",stdin);
-        freopen((name+".out").c_str(),"w",stdout);
+
+#ifndef ONLINE_JUDGE
+    if (!name.empty()) {
+        fin.open(name + ".in");
+        fout.open(name + ".out");
+        if (fin && fout) {
+            #define cin fin
+            #define cout fout
+        } else {
+            cerr << "⚠️  Failed to open files. Using stdio.\n";
+        }
     }
 #endif
 }
