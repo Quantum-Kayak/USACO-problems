@@ -126,6 +126,8 @@ using vb = vector<bool>;
 using vpi = vector<pii>;
 using vpl = vector<pll>;
 using vvi = vector<vi>;
+using vc = vector<char>;
+using vvc = vector<vector<char>>;
 
 /*****  Constants  *****/
 constexpr ll  INF64 = (ll)4e18;        // ~2^62
