@@ -158,86 +158,96 @@ void setIO(string name = "") {
 
 /*****  Debugging Tools  *****/
 #ifdef LOCAL
-  #include <iostream>
-  using namespace std;
 
-  #define dbg(x) cerr << #x << " = " << (x) << '\n'
-  #define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n'
-  #define dbg3(x, y, z) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << ", " << #z << " = " << (z) << '\n'
+#define dbg(x) cerr << #x << " = "; debug_out(x); cerr << '\n'
+#define dbg2(x, y) cerr << #x << " = "; debug_out(x); cerr << ", " << #y << " = "; debug_out(y); cerr << '\n'
+#define dbg3(x, y, z) cerr << #x << " = "; debug_out(x); cerr << ", " << #y << " = "; debug_out(y); cerr << ", " << #z << " = "; debug_out(z); cerr << '\n'
+#define dbgv(...) cerr << "[" << #__VA_ARGS__ << "] = ", debug_out(__VA_ARGS__), cerr << '\n';
 
-  template<typename T, typename... Args>
-  void debug_out(const T& first, const Args&... rest) {
-      cerr << first;
-      ((cerr << ", " << rest), ...);
-      cerr << '\n';
-  }
+/*****  Type Printers  *****/
+template<typename T>
+void debug_out(const T& val);
 
-  #define dbgv(...) cerr << "[" << #__VA_ARGS__ << "] = ", debug_out(__VA_ARGS__)
+/*****  Primitive + String Types  *****/
+template<typename T>
+typename enable_if<!is_class<T>::value || is_same<T, string>::value || is_same<T, char>::value || is_same<T, bool>::value, void>::type
+debug_out(const T& val) {
+    cerr << val;
+}
 
-  template <typename A, typename B>
-  ostream& operator<<(ostream& os, const pair<A, B>& p) {
-      return os << "(" << p.first << ", " << p.second << ")";
-  }
+/*****  Pair Type  *****/
+template<typename A, typename B>
+void debug_out(const pair<A, B>& p) {
+    cerr << "(";
+    debug_out(p.first);
+    cerr << ", ";
+    debug_out(p.second);
+    cerr << ")";
+}
 
-  template <typename T>
-  ostream& operator<<(ostream& os, const vector<T>& v) {
-      os << "[";
-      for (int i = 0; i < (int)v.size(); ++i)
-          os << v[i] << (i + 1 == (int)v.size() ? "" : ", ");
-      return os << "]";
-  }
+/*****  Tuple Type  *****/
+template<size_t I = 0, typename... Tp>
+typename enable_if<I == sizeof...(Tp), void>::type
+print_tuple(const tuple<Tp...>&) {}
 
-  template <typename T>
-  ostream& operator<<(ostream& os, const set<T>& s) {
-      os << "{";
-      for (auto it = s.begin(); it != s.end(); ++it)
-          os << *it << (next(it) == s.end() ? "" : ", ");
-      return os << "}";
-  }
+template<size_t I = 0, typename... Tp>
+typename enable_if<I < sizeof...(Tp), void>::type
+print_tuple(const tuple<Tp...>& t) {
+    if (I > 0) cerr << ", ";
+    debug_out(get<I>(t));
+    print_tuple<I + 1, Tp...>(t);
+}
 
-  template <typename T>
-  ostream& operator<<(ostream& os, const unordered_set<T>& s) {
-      os << "{";
-      for (auto it = s.begin(); it != s.end(); ++it)
-          os << *it << (next(it) == s.end() ? "" : ", ");
-      return os << "}";
-  }
+template<typename... Args>
+void debug_out(const tuple<Args...>& t) {
+    cerr << "(";
+    print_tuple(t);
+    cerr << ")";
+}
 
-  template <typename K, typename V>
-  ostream& operator<<(ostream& os, const map<K, V>& m) {
-      os << "{";
-      for (auto it = m.begin(); it != m.end(); ++it)
-          os << it->first << ": " << it->second << (next(it) == m.end() ? "" : ", ");
-      return os << "}";
-  }
-
-  template <typename K, typename V>
-  ostream& operator<<(ostream& os, const unordered_map<K, V>& m) {
-      os << "{";
-      for (auto it = m.begin(); it != m.end(); ++it)
-          os << it->first << ": " << it->second << (next(it) == m.end() ? "" : ", ");
-      return os << "}";
-  }
-
-// 2D Vector Printer: Pretty format for vvc, vvi, etc.
-template <typename T>
-ostream& operator<<(ostream& os, const vector<vector<T>>& mat) {
-    os << "[\n";
-    for (const auto& row : mat) {
-        os << "  [ ";
-        for (const auto& val : row)
-            os << val << " ";
-        os << "]\n";
+/*****  Optional Type  *****/
+template<typename T>
+void debug_out(const optional<T>& o) {
+    if (o) {
+        cerr << "opt(";
+        debug_out(*o);
+        cerr << ")";
+    } else {
+        cerr << "nullopt";
     }
-    os << "]";
-    return os;
+}
+
+/*****  Variant Type  *****/
+template<typename... Types>
+void debug_out(const variant<Types...>& v) {
+    visit([](const auto& val) { debug_out(val); }, v);
+}
+
+/*****  Generic Container Printer (vector, set, map, etc.)  *****/
+template<typename T>
+auto debug_out(const T& container) -> decltype(container.begin(), container.end(), void()) {
+    cerr << "{";
+    bool first = true;
+    for (const auto& val : container) {
+        if (!first) cerr << ", ";
+        debug_out(val);
+        first = false;
+    }
+    cerr << "}";
+}
+
+/*****  Variadic Printer  *****/
+template<typename T, typename... Args>
+void debug_out(const T& first, const Args&... rest) {
+    debug_out(first);
+    ((cerr << ", ", debug_out(rest)), ...);
 }
 
 #else
-  #define dbg(x)
-  #define dbg2(x, y)
-  #define dbg3(x, y, z)
-  #define dbgv(...)
+#define dbg(x)
+#define dbg2(x, y)
+#define dbg3(x, y, z)
+#define dbgv(...)
 #endif
 
 /*****  Helpers  *****/
