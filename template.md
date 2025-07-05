@@ -219,6 +219,20 @@ void setIO(string name = "") {
       return os << "}";
   }
 
+// 2D Vector Printer: Pretty format for vvc, vvi, etc.
+template <typename T>
+ostream& operator<<(ostream& os, const vector<vector<T>>& mat) {
+    os << "[\n";
+    for (const auto& row : mat) {
+        os << "  [ ";
+        for (const auto& val : row)
+            os << val << " ";
+        os << "]\n";
+    }
+    os << "]";
+    return os;
+}
+
 #else
   #define dbg(x)
   #define dbg2(x, y)
