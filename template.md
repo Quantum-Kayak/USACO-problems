@@ -136,6 +136,7 @@ constexpr int INF32 = 1e9+7;
 constexpr int MX    = 2e5 + 5;
 
 /*****  Fast IO  *****/
+
 ifstream fin;
 ofstream fout;
 
@@ -151,15 +152,11 @@ void setIO(string name = "") {
             #define cin fin
             #define cout fout
         } else {
-            cerr << "⚠️  Failed to open files. Using stdio.\n";
+            cerr << "⚠️  Failed to open files. Using standard input/output.\n";
         }
     } else {
-        // ← This is the fix: even if name is empty, we still use stdio
-        // So no more instant exit sadness.
         cerr << "Using standard input/output.\n";
     }
-#else
-    // On online judges, do nothing. Stdio is default.
 #endif
 }
 
