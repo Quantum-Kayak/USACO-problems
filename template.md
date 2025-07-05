@@ -135,8 +135,7 @@ constexpr ll  INF64 = (ll)4e18;        // ~2^62
 constexpr int INF32 = 1e9+7;
 constexpr int MX    = 2e5 + 5;
 
-/*****  Fast IO  *****/
-
+/***** Fast IO with fallback *****/
 ifstream fin;
 ofstream fout;
 
@@ -252,7 +251,7 @@ void debug_out(const vector<vector<T>>& mat) {
     cerr << "[\n";
     for (const auto& row : mat) {
         cerr << "  ";
-        debug_out(row);
+        ::debug_out<vector<T>>(row);
         cerr << '\n';
     }
     cerr << "]";
