@@ -243,6 +243,17 @@ void debug_out(const T& first, const Args&... rest) {
     ((cerr << ", ", debug_out(rest)), ...);
 }
 
+template<typename T>
+void debug_out(const vector<vector<T>>& mat) {
+    cerr << "[\n";
+    for (const auto& row : mat) {
+        cerr << "  ";
+        debug_out(row);
+        cerr << '\n';
+    }
+    cerr << "]";
+}
+
 #else
 #define dbg(x)
 #define dbg2(x, y)
