@@ -106,6 +106,7 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 # USACO template🐮
 
 ``` cpp
+#define LOCAL
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace std;
@@ -152,7 +153,13 @@ void setIO(string name = "") {
         } else {
             cerr << "⚠️  Failed to open files. Using stdio.\n";
         }
+    } else {
+        // ← This is the fix: even if name is empty, we still use stdio
+        // So no more instant exit sadness.
+        cerr << "Using standard input/output.\n";
     }
+#else
+    // On online judges, do nothing. Stdio is default.
 #endif
 }
 
