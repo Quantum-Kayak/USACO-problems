@@ -149,33 +149,38 @@ struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32
 
 /***** DSU (Disjoint Set Union) implementation *****/
 struct DSU {
-    vector<int> parent, rank;
+    vi parent, rank, size;
 
     DSU(int n) {
         parent.resize(n);
         rank.resize(n, 0);
-        for (int i = 0; i < n; ++i)
-            parent[i] = i;
+        size.resize(n, 1);
+        iota(all(parent), 0); // fill with 0..n-1
     }
 
     int find(int x) {
         if (parent[x] != x)
-            parent[x] = find(parent[x]); // path compression
+            parent[x] = find(parent[x]);
         return parent[x];
     }
 
-    void unite(int x, int y) {
-        int rx = find(x);
-        int ry = find(y);
-        if (rx == ry) return;
+    bool unite(int x, int y) {
+        int rx = find(x), ry = find(y);
+        if (rx == ry) return false;
 
-        if (rank[rx] < rank[ry]) {
-            parent[rx] = ry;
-        } else {
-            parent[ry] = rx;
-            if (rank[rx] == rank[ry])
-                rank[rx]++;
-        }
+        if (rank[rx] < rank[ry]) swap(rx, ry);
+        parent[ry] = rx;
+        size[rx] += size[ry];
+        if (rank[rx] == rank[ry]) rank[rx]++;
+        return true;
+    }
+
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+
+    int get_size(int x) {
+        return size[find(x)];
     }
 };
 
