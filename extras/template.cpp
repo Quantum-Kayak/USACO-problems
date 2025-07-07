@@ -127,7 +127,7 @@ void __dbg(const T &first, const Ts&... rest) {
     __dbg(rest...);
 }
 
-#define dbg(...) cout << "[" << #__VA_ARGS__ << "] = ", __dbg(__VA_ARGS__)
+#define dbg(...) cout << "[" << #__VA_ARGS__ << "] =\n", __dbg(__VA_ARGS__)
 #else
 #define dbg(...)
 #endif
