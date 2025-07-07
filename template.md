@@ -139,129 +139,103 @@ constexpr int MX    = 2e5 + 5;
 ifstream fin;
 ofstream fout;
 
-void setIO(string name = "") {
+#ifdef LOCAL
+    #define USE_FILE_IO
+#endif
+
+void setIO(const string &name = "") {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-#ifndef ONLINE_JUDGE
+#ifdef USE_FILE_IO
     if (!name.empty()) {
         fin.open(name + ".in");
         fout.open(name + ".out");
-        if (fin && fout) {
-            #define cin fin
-            #define cout fout
+
+        if (fin) {
+            cin.rdbuf(fin.rdbuf());  // Redirect cin to read from file
         } else {
-            cerr << "⚠️  Failed to open files. Using standard input/output.\n";
+            cout << "⚠️  Could not open " << name << ".in\n";
+        }
+
+        if (fout) {
+            cout.rdbuf(fout.rdbuf()); // Redirect cout to write to file
+        } else {
+            cout << "⚠️  Could not open " << name << ".out\n";
         }
     } else {
-        cerr << "Using standard input/output.\n";
+        cout << "⚠️  No filename provided. Using standard input/output.\n";
     }
 #endif
 }
 
 /*****  Debugging Tools  *****/
 #ifdef LOCAL
+void _print(int x) { cout << x; }
+void _print(long long x) { cout << x; }
+void _print(unsigned x) { cout << x; }
+void _print(unsigned long long x) { cout << x; }
+void _print(double x) { cout << x; }
+void _print(char x) { cout << '\'' << x << '\''; }
+void _print(const string &x) { cout << '\"' << x << '\"'; }
 
-#define dbg(x) cerr << #x << " = "; debug_out(x); cerr << '\n'
-#define dbg2(x, y) cerr << #x << " = "; debug_out(x); cerr << ", " << #y << " = "; debug_out(y); cerr << '\n'
-#define dbg3(x, y, z) cerr << #x << " = "; debug_out(x); cerr << ", " << #y << " = "; debug_out(y); cerr << ", " << #z << " = "; debug_out(z); cerr << '\n'
-#define dbgv(...) cerr << "[" << #__VA_ARGS__ << "] = ", debug_out(__VA_ARGS__), cerr << '\n';
-
-/*****  Type Printers  *****/
 template<typename T>
-void debug_out(const T& val);
+void _print_sideways(const vector<T> &v) {
+    cout << '[';
+    for (size_t i = 0; i < v.size(); ++i) {
+        if (i) cout << ", ";
+        _print(v[i]);
+    }
+    cout << ']';
+}
 
-/*****  Primitive + String Types  *****/
 template<typename T>
-typename enable_if<!is_class<T>::value || is_same<T, string>::value || is_same<T, char>::value || is_same<T, bool>::value, void>::type
-debug_out(const T& val) {
-    cerr << val;
-}
+void _print(const vector<T> &v) { _print_sideways(v); }
 
-/*****  Pair Type  *****/
-template<typename A, typename B>
-void debug_out(const pair<A, B>& p) {
-    cerr << "(";
-    debug_out(p.first);
-    cerr << ", ";
-    debug_out(p.second);
-    cerr << ")";
-}
-
-/*****  Tuple Type  *****/
-template<size_t I = 0, typename... Tp>
-typename enable_if<I == sizeof...(Tp), void>::type
-print_tuple(const tuple<Tp...>&) {}
-
-template<size_t I = 0, typename... Tp>
-typename enable_if<I < sizeof...(Tp), void>::type
-print_tuple(const tuple<Tp...>& t) {
-    if (I > 0) cerr << ", ";
-    debug_out(get<I>(t));
-    print_tuple<I + 1, Tp...>(t);
-}
-
-template<typename... Args>
-void debug_out(const tuple<Args...>& t) {
-    cerr << "(";
-    print_tuple(t);
-    cerr << ")";
-}
-
-/*****  Optional Type  *****/
 template<typename T>
-void debug_out(const optional<T>& o) {
-    if (o) {
-        cerr << "opt(";
-        debug_out(*o);
-        cerr << ")";
-    } else {
-        cerr << "nullopt";
+void _print(const vector<vector<T>> &v) {
+    for (const auto &row : v) {
+        _print_sideways(row);
+        cout << '\n';
     }
 }
 
-/*****  Variant Type  *****/
-template<typename... Types>
-void debug_out(const variant<Types...>& v) {
-    visit([](const auto& val) { debug_out(val); }, v);
-}
-
-/*****  Generic Container Printer (vector, set, map, etc.)  *****/
-template<typename T>
-auto debug_out(const T& container) -> decltype(container.begin(), container.end(), void()) {
-    cerr << "{";
-    bool first = true;
-    for (const auto& val : container) {
-        if (!first) cerr << ", ";
-        debug_out(val);
-        first = false;
+void _print(const vector<pair<int, int>> &v) {
+    for (const auto &[a, b] : v) {
+        cout << a << ", " << b << '\n';
     }
-    cerr << "}";
-}
-
-/*****  Variadic Printer  *****/
-template<typename T, typename... Args>
-void debug_out(const T& first, const Args&... rest) {
-    debug_out(first);
-    ((cerr << ", ", debug_out(rest)), ...);
 }
 
 template<typename T>
-void debug_out(const vector<vector<T>>& mat) {
-    cerr << "[\n";
-    for (const auto& row : mat) {
-        cerr << "  ";
-        ::debug_out<vector<T>>(row);
-        cerr << '\n';
+void _print(const set<T> &s) {
+    for (const auto &x : s) {
+        _print(x);
+        cout << '\n';
     }
-    cerr << "]";
 }
 
+template<typename K, typename V>
+void _print(const map<K, V> &m) {
+    for (const auto &[key, val] : m) {
+        _print(key);
+        cout << " -> ";
+        _print(val);
+        cout << '\n';
+    }
+}
+
+template<typename T>
+void __dbg(const T &x) { _print(x); cout << '\n'; }
+
+template<typename T, typename... Ts>
+void __dbg(const T &first, const Ts&... rest) {
+    _print(first); cout << " | ";
+    __dbg(rest...);
+}
+
+#define dbg(...) cout << "[" << #__VA_ARGS__ << "] = ", __dbg(__VA_ARGS__)
 #else
-#define dbg(x)
-#define dbg2(x, y)
-#define dbg3(x, y, z)
-#define dbgv(...)
+#define dbg(...)
 #endif
 
 /*****  Helpers  *****/
