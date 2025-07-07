@@ -1,42 +1,53 @@
 # 🐄 USACO Problems Repository
 
-Welcome to my collection of USACO problems, solved, categorized, and mildly roasted. This archive is meant to be a long-term knowledge base, a strategy journal, and a reminder that I once thought brute force was a good idea.
+Welcome to my archive of solved USACO problems, organized for brutal clarity, long-term reference, and future self-roasting. Each problem includes:
 
-Each problem comes with:
+- ✅ A `.cpp` file with the complete solution
+- 🧠 A `README.md` (or `.XN.md`) with an explanation, strategy breakdown, and mental notes
+- 🦥 Sometimes a `TLE.cpp` cause I was too slow
+- ⌚ Some problems will have multiple solutions as part of mock contests, marked by `pracn`
+- 🗂 Sorted by **division**, **difficulty**, and **problem metadata**
 
-- ✅ A complete `.cpp` solution  
-- 🧠 A markdown write-up (`.md`) summarizing strategy, edge cases, and lessons learned  
-- 🦥 Occasional `TLE.cpp` files that document slow, tragic failures  
-- 🗂 Organized by division, difficulty, and sanity level
+---
 
-## 📁 Structure
+## 📁 Repository Structure
 
+```text
 USACO-problems/
 ├── bronze/
-│ ├── starred/
-│ └── unstarred/
+│   ├── starred/
+│   │   ├── easy/
+│   │   ├── normal/
+│   │   ├── hard/
+│   │   └── insane/
+│   └── unstarred/
+│       ├── easy/
+│       ├── normal/
+│       ├── hard/
+│       └── insane/
 ├── silver/
+│   └── starred/...
 ├── gold/
+│   └── ...
 └── plat/
+    └── ...
+```
+## 🎯 Naming Convention
 
-Problems are sorted into folders by:
-- `division` (bronze/silver/etc.)
-- `difficulty` (easy/normal/hard/insane)
-- `starred` if worth revisiting
-- Markdown files may have `.XN.md` if the problem was cursed
+Each problem folder contains:
 
-## 🛠 Why This Exists
+- `problemname.cpp` → The actual C++ solution  
+- `problemname.md` → Writeup and explanation  
+- `problemname.XN.md` → If the problem is cursed, deranged, or deserves its own therapy session  
 
-- To practice USACO-style competitive programming  
-- To build a searchable log of problem-solving strategies  
-- To shame myself into writing actual documentation  
-- To avoid repeating the same mistakes next month
+**Examples:**
+```text
+bronze/starred/easy/blockgame/
+├── blockgame.cpp
+└── blockgame.md
 
-## 💀 Regret Taxonomy
-
-Each markdown write-up may include:
-- 🔖 Tags for topic/difficulty/regret
-- 🚧 Dead-end ideas I chased too long
-- 😭 The moment I realized it was prefix sums again
-
+silver/unstarred/hard/fencedin/
+├── fencedin.cpp
+└── fencedin.XN.md
+```
 Happy coding. May your arrays be zero-indexed and your graphs acyclic.
