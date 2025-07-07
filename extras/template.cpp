@@ -66,6 +66,14 @@ void setIO(const string &name = "") {
 /*****  Debugging Tools  *****/
 #ifdef LOCAL
 // Debug print functions for various types
+void _print(int x) { cout << x; }
+void _print(long long x) { cout << x; }
+void _print(unsigned x) { cout << x; }
+void _print(unsigned long long x) { cout << x; }
+void _print(double x) { cout << x; }
+void _print(char x) { cout << '\'' << x << '\''; }
+void _print(const string &x) { cout << '"' << x << '"'; }
+
 template<typename T> void _print_sideways(const vector<T> &v) {
     cout << '[';
     for (size_t i = 0; i < v.size(); ++i) {
@@ -74,14 +82,6 @@ template<typename T> void _print_sideways(const vector<T> &v) {
     }
     cout << ']';
 }
-
-void _print(int x) { cout << x; }
-void _print(long long x) { cout << x; }
-void _print(unsigned x) { cout << x; }
-void _print(unsigned long long x) { cout << x; }
-void _print(double x) { cout << x; }
-void _print(char x) { cout << '\'' << x << '\''; }
-void _print(const string &x) { cout << '"' << x << '"'; }
 
 template<typename T>
 void _print(const vector<T> &v) { _print_sideways(v); }
