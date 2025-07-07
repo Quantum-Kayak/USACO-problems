@@ -38,7 +38,8 @@ Each problem folder contains:
 
 - `problemname.cpp` → The actual C++ solution  
 - `problemname.md` → Writeup and explanation  
-- `problemname.XN.md` → If the problem is cursed, deranged, or deserves its own therapy session  
+- `problemname.XN.md` → If the problem is cursed, deranged, or deserves its own therapy session
+- `problemname.TLE.cpp` → If I was too slow the first time around
 
 **Examples:**
 ```text
