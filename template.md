@@ -1,5 +1,6 @@
 # USACO template🐮
-[📋 Copy raw template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/template.cpp)
+[📋 Copy raw template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
+
 # 🐄 USACO Problems Repository
 
 Welcome to my archive of solved USACO problems, organized for brutal clarity, long-term reference, and future self-roasting. Each problem includes:
