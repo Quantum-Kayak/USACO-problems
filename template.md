@@ -112,6 +112,7 @@ Happy coding. May your segments never overflow, and your trees remain acyclic.
 using namespace std;
 using namespace __gnu_pbds;
 
+// Min-priority queue alias using greater comparator
 template<class T>
 using minpq = priority_queue<T, vector<T>, greater<T>>;
 
@@ -131,9 +132,9 @@ using vc = vector<char>;
 using vvc = vector<vector<char>>;
 
 /*****  Constants  *****/
-constexpr ll  INF64 = (ll)4e18;        // ~2^62
-constexpr int INF32 = 1e9+7;
-constexpr int MX    = 2e5 + 5;
+constexpr ll  INF64 = (ll)4e18;        // Very large number for 64-bit integer
+constexpr int INF32 = 1e9+7;          // Common large number for 32-bit
+constexpr int MX    = 2e5 + 5;        // Useful upper bound for array sizes
 
 /***** Fast IO with fallback *****/
 ifstream fin;
@@ -143,6 +144,7 @@ ofstream fout;
     #define USE_FILE_IO
 #endif
 
+// Fast I/O setup with optional file redirection
 void setIO(const string &name = "") {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -153,34 +155,26 @@ void setIO(const string &name = "") {
         fout.open(name + ".out");
 
         if (fin) {
-            cin.rdbuf(fin.rdbuf());  // Redirect cin to read from file
+            cin.rdbuf(fin.rdbuf());  // Redirect cin to file
         } else {
-            cout << "⚠️  Could not open " << name << ".in\n";
+            cout << "\u26A0\uFE0F  Could not open " << name << ".in\n";
         }
 
         if (fout) {
-            cout.rdbuf(fout.rdbuf()); // Redirect cout to write to file
+            cout.rdbuf(fout.rdbuf()); // Redirect cout to file
         } else {
-            cout << "⚠️  Could not open " << name << ".out\n";
+            cout << "\u26A0\uFE0F  Could not open " << name << ".out\n";
         }
     } else {
-        cout << "⚠️  No filename provided. Using standard input/output.\n";
+        cout << "\u26A0\uFE0F  No filename provided. Using standard input/output.\n";
     }
 #endif
 }
 
 /*****  Debugging Tools  *****/
 #ifdef LOCAL
-void _print(int x) { cout << x; }
-void _print(long long x) { cout << x; }
-void _print(unsigned x) { cout << x; }
-void _print(unsigned long long x) { cout << x; }
-void _print(double x) { cout << x; }
-void _print(char x) { cout << '\'' << x << '\''; }
-void _print(const string &x) { cout << '\"' << x << '\"'; }
-
-template<typename T>
-void _print_sideways(const vector<T> &v) {
+// Debug print functions for various types
+template<typename T> void _print_sideways(const vector<T> &v) {
     cout << '[';
     for (size_t i = 0; i < v.size(); ++i) {
         if (i) cout << ", ";
@@ -188,6 +182,14 @@ void _print_sideways(const vector<T> &v) {
     }
     cout << ']';
 }
+
+void _print(int x) { cout << x; }
+void _print(long long x) { cout << x; }
+void _print(unsigned x) { cout << x; }
+void _print(unsigned long long x) { cout << x; }
+void _print(double x) { cout << x; }
+void _print(char x) { cout << '\'' << x << '\''; }
+void _print(const string &x) { cout << '"' << x << '"'; }
 
 template<typename T>
 void _print(const vector<T> &v) { _print_sideways(v); }
@@ -244,25 +246,28 @@ template<class T> inline bool chmax(T& a,const T& b){ return b>a ? a=b,1:0; }
 template<class T> int lb(const vector<T>& v,const T& x){ return lower_bound(v.begin(),v.end(),x)-v.begin(); }
 template<class T> int ub(const vector<T>& v,const T& x){ return upper_bound(v.begin(),v.end(),x)-v.begin(); }
 template<class T> T ceil_div(T a,T b){ return (a+b-1)/b; }
+// Fast modular exponentiation
 ll powmod(ll a,ll e,ll mod){ ll r=1; for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod; return r; }
 
 /*****  pair hash for unordered_map / gp_hash_table  *****/
 struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32)^p.second; } };
 
-/***** DSU ******/
+/***** DSU (Disjoint Set Union) implementation *****/
 vector<int> parent, size;
 
-void make_set(int v) {
+// Initialize single setoid make_set(int v) {
     parent[v] = v;
     size[v] = 1;
 }
 
+// Find representative with path compression
 int find_set(int v) {
     if (v == parent[v])
         return v;
     return parent[v] = find_set(parent[v]);
 }
 
+// Union by size
 void union_sets(int a, int b) {
     a = find_set(a);
     b = find_set(b);
@@ -273,13 +278,14 @@ void union_sets(int a, int b) {
     }
 }
 
+// DSU initialization for n elements
 void init_dsu(int n) {
     parent.resize(n);
     size.assign(n, 1);
     for (int i = 0; i < n; ++i) parent[i] = i;
 }
 
-/***** Shortcuts ******/
+/***** Shortcuts *****/
 #define pb push_back
 #define all(x) x.begin(), x.end()
 #define f first
@@ -288,8 +294,8 @@ void init_dsu(int n) {
 #define each(a, x) for (auto& a : x)
 
 int main() {
-    setIO(); // Change filename as needed
-    
+    setIO(); // Change filename as needed for file I/O
+
     return 0;
 }
 ```
