@@ -255,7 +255,7 @@ struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32
 /***** DSU (Disjoint Set Union) implementation *****/
 vector<int> parent, size;
 
-// Initialize single setoid make_set(int v) {
+// Initialize single set void make_set(int v) {
     parent[v] = v;
     size[v] = 1;
 }
