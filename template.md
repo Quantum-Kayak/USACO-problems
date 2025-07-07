@@ -273,6 +273,12 @@ void union_sets(int a, int b) {
     }
 }
 
+void init_dsu(int n) {
+    parent.resize(n);
+    size.assign(n, 1);
+    for (int i = 0; i < n; ++i) parent[i] = i;
+}
+
 /***** Shortcuts ******/
 #define pb push_back
 #define all(x) x.begin(), x.end()
