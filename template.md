@@ -148,37 +148,36 @@ ll powmod(ll a,ll e,ll mod){ ll r=1; for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod; 
 struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32)^p.second; } };
 
 /***** DSU (Disjoint Set Union) implementation *****/
-vector<int> parent, size;
+struct DSU {
+    vector<int> parent, rank;
 
-// Initialize single set void make_set(int v) {
-    parent[v] = v;
-    size[v] = 1;
-}
-
-// Find representative with path compression
-int find_set(int v) {
-    if (v == parent[v])
-        return v;
-    return parent[v] = find_set(parent[v]);
-}
-
-// Union by size
-void union_sets(int a, int b) {
-    a = find_set(a);
-    b = find_set(b);
-    if (a != b) {
-        if (size[a] < size[b]) swap(a, b);
-        parent[b] = a;
-        size[a] += size[b];
+    DSU(int n) {
+        parent.resize(n);
+        rank.resize(n, 0);
+        for (int i = 0; i < n; ++i)
+            parent[i] = i;
     }
-}
 
-// DSU initialization for n elements
-void init_dsu(int n) {
-    parent.resize(n);
-    size.assign(n, 1);
-    for (int i = 0; i < n; ++i) parent[i] = i;
-}
+    int find(int x) {
+        if (parent[x] != x)
+            parent[x] = find(parent[x]); // path compression
+        return parent[x];
+    }
+
+    void unite(int x, int y) {
+        int rx = find(x);
+        int ry = find(y);
+        if (rx == ry) return;
+
+        if (rank[rx] < rank[ry]) {
+            parent[rx] = ry;
+        } else {
+            parent[ry] = rx;
+            if (rank[rx] == rank[ry])
+                rank[rx]++;
+        }
+    }
+};
 
 /***** Shortcuts *****/
 #define pb push_back
