@@ -147,12 +147,18 @@ struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32
 /***** DSU (Disjoint Set Union) implementation *****/
 struct DSU {
     vi parent, rank, size;
+    int components;
 
     DSU(int n) {
+        init(n);
+    }
+
+    void init(int n) {
         parent.resize(n);
-        rank.resize(n, 0);
-        size.resize(n, 1);
-        iota(all(parent), 0); // fill with 0..n-1
+        rank.assign(n, 0);
+        size.assign(n, 1);
+        iota(all(parent), 0);
+        components = n;
     }
 
     int find(int x) {
@@ -169,6 +175,7 @@ struct DSU {
         parent[ry] = rx;
         size[rx] += size[ry];
         if (rank[rx] == rank[ry]) rank[rx]++;
+        components--;
         return true;
     }
 
@@ -178,6 +185,34 @@ struct DSU {
 
     int get_size(int x) {
         return size[find(x)];
+    }
+
+    int count() const {
+        return components;
+    }
+
+    bool is_leader(int x) const {
+        return parent[x] == x;
+    }
+
+    // Optional: get all component leaders
+    vi leaders() const {
+        vi res;
+        for (int i = 0; i < sz(parent); ++i)
+            if (is_leader(i)) res.pb(i);
+        return res;
+    }
+
+    // Optional: get all elements by component
+    // Only use this in small-medium n situations
+    vvi groups() {
+        unordered_map<int, vi> g;
+        for (int i = 0; i < sz(parent); ++i)
+            g[find(i)].pb(i);
+        vvi res;
+        for (auto &[_, v] : g)
+            res.pb(move(v));
+        return res;
     }
 };
 
