@@ -249,6 +249,30 @@ ll powmod(ll a,ll e,ll mod){ ll r=1; for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod; 
 /*****  pair hash for unordered_map / gp_hash_table  *****/
 struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32)^p.second; } };
 
+/***** DSU ******/
+vector<int> parent, size;
+
+void make_set(int v) {
+    parent[v] = v;
+    size[v] = 1;
+}
+
+int find_set(int v) {
+    if (v == parent[v])
+        return v;
+    return parent[v] = find_set(parent[v]);
+}
+
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
+    if (a != b) {
+        if (size[a] < size[b]) swap(a, b);
+        parent[b] = a;
+        size[a] += size[b];
+    }
+}
+
 /***** Shortcuts ******/
 #define pb push_back
 #define all(x) x.begin(), x.end()
