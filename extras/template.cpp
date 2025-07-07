@@ -144,6 +144,14 @@ ll powmod(ll a,ll e,ll mod){ ll r=1; for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod; 
 /*****  pair hash for unordered_map / gp_hash_table  *****/
 struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32)^p.second; } };
 
+/***** Shortcuts *****/
+#define pb push_back
+#define all(x) x.begin(), x.end()
+#define f first
+#define s second
+#define sz(x) (int)(x).size()
+#define each(a, x) for (auto& a : x)
+
 /***** DSU (Disjoint Set Union) implementation *****/
 struct DSU {
     vi parent, rank, size;
@@ -215,15 +223,7 @@ struct DSU {
         return res;
     }
 };
-
-/***** Shortcuts *****/
-#define pb push_back
-#define all(x) x.begin(), x.end()
-#define f first
-#define s second
-#define sz(x) (int)(x).size()
-#define each(a, x) for (auto& a : x)
-
+/***** da meat *****/
 int main() {
     setIO(); // Change filename as needed for file I/O
 
