@@ -1,14 +1,47 @@
 #define LOCAL
-#include <bits/stdc++.h>
+
+// =====================
+// ===  Standard Headers  ===
+// =====================
+#include <iostream>     // standard I/O
+#include <cstdio>       // C-style I/O
+#include <cstdlib>      // standard library stuff
+#include <cstring>      // C-style strings
+#include <string>       // C++ strings
+#include <cmath>        // math functions
+#include <algorithm>    // sort, binary_search, etc.
+#include <vector>       // dynamic arrays
+#include <deque>        // double-ended queues
+#include <queue>        // FIFO, priority queues
+#include <stack>        // LIFO stack
+#include <map>          // associative array (balanced BST)
+#include <unordered_map>// hash table map
+#include <set>          // balanced BST set
+#include <unordered_set>// hash set
+#include <bitset>       // fixed-size bit arrays
+#include <utility>      // pairs
+#include <tuple>        // tuples
+#include <climits>      // INT_MAX, etc.
+#include <limits>       // numeric_limits
+#include <cassert>      // assert
+#include <ctime>        // if you're playing with time (why?)
+#include <functional>   // function objects (functors, lambdas)
+#include <list>         // doubly-linked list (you’ll never need this)
+#include <array>        // fixed-size array with bounds checking
+#include <fstream>      // file I/O (for testing maybe)
+#include <iomanip>      // manipulators for I/O formatting
+#include <sstream>      // string streams (for the deranged)
+#include <numeric>      // accumulate, iota, etc.
+#include <valarray>     // the redheaded stepchild of containers
+#include <cctype>       // char functions like isdigit, isalpha, etc.
 #include <ext/pb_ds/assoc_container.hpp>
+
 using namespace std;
 using namespace __gnu_pbds;
 
-// Min-priority queue alias using greater comparator
-template<class T>
-using minpq = priority_queue<T, vector<T>, greater<T>>;
-
-/*****  Aliases & typedefs  *****/
+// =====================
+// ===  Type Aliases and Typedefs  ===
+// =====================
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;
@@ -23,12 +56,19 @@ using vvi = vector<vi>;
 using vc = vector<char>;
 using vvc = vector<vector<char>>;
 
-/*****  Constants  *****/
-constexpr ll  INF64 = (ll)4e18;        // Very large number for 64-bit integer
-constexpr int INF32 = 1e9+7;          // Common large number for 32-bit
-constexpr int MX    = 2e5 + 5;        // Useful upper bound for array sizes
+template<class T>
+using minpq = priority_queue<T, vector<T>, greater<T>>;
 
-/***** Fast IO with fallback *****/
+// =====================
+// ===  Constants  ===
+// =====================
+constexpr ll  INF64 = (ll)4e18;        // Very large number for 64-bit integer
+constexpr int INF32 = 1e9+7;           // Common large number for 32-bit
+constexpr int MX    = 2e5 + 5;         // Useful upper bound for array sizes
+
+// =====================
+// ===  Fast I/O Setup  ===
+// =====================
 ifstream fin;
 ofstream fout;
 
@@ -36,7 +76,6 @@ ofstream fout;
     #define USE_FILE_IO
 #endif
 
-// Fast I/O setup with optional file redirection
 void setIO(const string &name = "") {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -63,9 +102,10 @@ void setIO(const string &name = "") {
 #endif
 }
 
-/*****  Debugging Tools  *****/
+// =====================
+// ===  Debug Utilities  ===
+// =====================
 #ifdef LOCAL
-// Debug print functions for various types
 void _print(int x) { cout << x; }
 void _print(long long x) { cout << x; }
 void _print(unsigned x) { cout << x; }
@@ -132,19 +172,33 @@ void __dbg(const T &first, const Ts&... rest) {
 #define dbg(...)
 #endif
 
-/*****  Helpers  *****/
+// =====================
+// ===  Helper Functions  ===
+// =====================
 template<class T> inline bool chmin(T& a,const T& b){ return b<a ? a=b,1:0; }
 template<class T> inline bool chmax(T& a,const T& b){ return b>a ? a=b,1:0; }
 template<class T> int lb(const vector<T>& v,const T& x){ return lower_bound(v.begin(),v.end(),x)-v.begin(); }
 template<class T> int ub(const vector<T>& v,const T& x){ return upper_bound(v.begin(),v.end(),x)-v.begin(); }
 template<class T> T ceil_div(T a,T b){ return (a+b-1)/b; }
-// Fast modular exponentiation
-ll powmod(ll a,ll e,ll mod){ ll r=1; for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod; return r; }
 
-/*****  pair hash for unordered_map / gp_hash_table  *****/
-struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32)^p.second; } };
+ll powmod(ll a,ll e,ll mod){
+    ll r=1;
+    for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod;
+    return r;
+}
 
-/***** Shortcuts *****/
+// =====================
+// ===  Custom Hashing  ===
+// =====================
+struct pair_hash {
+    size_t operator()(pii p) const {
+        return ((uint64_t)p.first << 32) ^ p.second;
+    }
+};
+
+// =====================
+// ===  Macro Shortcuts  ===
+// =====================
 #define pb push_back
 #define all(x) x.begin(), x.end()
 #define f first
@@ -152,14 +206,14 @@ struct pair_hash{ size_t operator()(pii p) const { return ((uint64_t)p.first<<32
 #define sz(x) (int)(x).size()
 #define each(a, x) for (auto& a : x)
 
-/***** DSU (Disjoint Set Union) implementation *****/
+// =====================
+// ===  Disjoint Set Union (DSU)  ===
+// =====================
 struct DSU {
     vi parent, rank, size;
     int components;
 
-    DSU(int n) {
-        init(n);
-    }
+    DSU(int n) { init(n); }
 
     void init(int n) {
         parent.resize(n);
@@ -187,23 +241,11 @@ struct DSU {
         return true;
     }
 
-    bool same(int x, int y) {
-        return find(x) == find(y);
-    }
+    bool same(int x, int y) { return find(x) == find(y); }
+    int get_size(int x) { return size[find(x)]; }
+    int count() const { return components; }
+    bool is_leader(int x) const { return parent[x] == x; }
 
-    int get_size(int x) {
-        return size[find(x)];
-    }
-
-    int count() const {
-        return components;
-    }
-
-    bool is_leader(int x) const {
-        return parent[x] == x;
-    }
-
-    // Optional: get all component leaders
     vi leaders() const {
         vi res;
         for (int i = 0; i < sz(parent); ++i)
@@ -211,8 +253,6 @@ struct DSU {
         return res;
     }
 
-    // Optional: get all elements by component
-    // Only use this in small-medium n situations
     vvi groups() {
         unordered_map<int, vi> g;
         for (int i = 0; i < sz(parent); ++i)
@@ -223,7 +263,10 @@ struct DSU {
         return res;
     }
 };
-/***** da meat *****/
+
+// =====================
+// ===  Main Driver  ===
+// =====================
 int main() {
     setIO(); // Change filename as needed for file I/O
 
