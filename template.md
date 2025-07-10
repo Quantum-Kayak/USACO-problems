@@ -1,5 +1,6 @@
 # USACO template🐮
 **ctrl a ctrl c to copy**
+
 [📋 Copy raw template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
 
 [📋 Copy minimal template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/minimal.cpp)
