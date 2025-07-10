@@ -34,6 +34,7 @@
 #include <numeric>      // accumulate, iota, etc.
 #include <valarray>     // the redheaded stepchild of containers
 #include <cctype>       // char functions like isdigit, isalpha, etc.
+#include <cstdint>
 
 using namespace std;
 
