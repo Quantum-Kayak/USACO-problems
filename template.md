@@ -1,5 +1,6 @@
 # USACO template🐮
 [📋 Copy raw template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
+[📋 Copy minimal template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/minimal.cpp)
 
 # 🐄 Problem Name – USACO [Division] ([Month Year])
 
