@@ -34,7 +34,6 @@
 #include <numeric>      // accumulate, iota, etc.
 #include <valarray>     // the redheaded stepchild of containers
 #include <cctype>       // char functions like isdigit, isalpha, etc.
-#include <ext/pb_ds/assoc_container.hpp>
 
 using namespace std;
 
