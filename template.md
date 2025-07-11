@@ -5,6 +5,7 @@
 
 [📋 Copy minimal template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/minimal.cpp)
 
+[list of all solved problems to far](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/list.md)
 # 🐄 Problem Name – USACO [Division] ([Month Year])
 
 This directory contains a C++ solution to the **"[Problem Name]"** problem from the USACO [Division] division.
