@@ -14,10 +14,7 @@ n₂
 ...
 nₜ
 
-pgsql
-Copy
-Edit
-- \(1 \le t \le 10^5\), and each \( n_i \) can be as large as \(10^9\).
+- (1 <= t <= 10^5), and each ( n_i ) can be as large as (10^9).
 
 ## 📤 Output Format
 For each test case, output a single integer — the number of “round-up” integers between 1 and \( n \).
