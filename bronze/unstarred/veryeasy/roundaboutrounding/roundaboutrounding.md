@@ -43,7 +43,7 @@ For each test case, output a single integer — the number of “round-up” int
 4. Loop terminates when `low > n`.
 5. Repeat per test case.
 
-- Time complexity: **O(log n)** per \( n \) (only ~10 iterations for \( n \le 10^9 \)).
+- Time complexity: **O(log n)** per \( n \) (only ~10 iterations for \( n <= 10^9 \)).
 
 ## 🚀 How to Run
 ```sh
