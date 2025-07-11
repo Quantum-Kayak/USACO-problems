@@ -24,15 +24,12 @@
 #include <climits>      // INT_MAX, etc.
 #include <limits>       // numeric_limits
 #include <cassert>      // assert
-#include <ctime>        // if you're playing with time (why?)
 #include <functional>   // function objects (functors, lambdas)
-#include <list>         // doubly-linked list (you’ll never need this)
 #include <array>        // fixed-size array with bounds checking
 #include <fstream>      // file I/O (for testing maybe)
 #include <iomanip>      // manipulators for I/O formatting
 #include <sstream>      // string streams (for the deranged)
 #include <numeric>      // accumulate, iota, etc.
-#include <valarray>     // the redheaded stepchild of containers
 #include <cctype>       // char functions like isdigit, isalpha, etc.
 #include <cstdint>
 
@@ -297,44 +294,6 @@ int binary_search_last_true(int lo, int hi, Func check) {
     return check(lo) ? lo : lo - 1;
 }
 
-// =====================
-// === Binary Search Utilities ===
-// =====================
-
-// Finds the smallest x in [lo, hi] such that check(x) == true
-// Returns hi + 1 if no such x exists (i.e., all check(x) are false)
-template<typename Func>
-int binary_search_first_true(int lo, int hi, Func check) {
-    while (lo < hi) {
-        int mid = lo + (hi - lo) / 2;
-        if (check(mid)) {
-            hi = mid;
-        } else {
-            lo = mid + 1;
-        }
-    }
-    return check(lo) ? lo : hi + 1;
-}
-
-// Finds the largest x in [lo, hi] such that check(x) == true
-// Returns lo - 1 if no such x exists (i.e., all check(x) are false)
-template<typename Func>
-int binary_search_last_true(int lo, int hi, Func check) {
-    while (lo < hi) {
-        int mid = lo + (hi - lo + 1) / 2; // upper mid to prevent infinite loop
-        if (check(mid)) {
-            lo = mid;
-        } else {
-            hi = mid - 1;
-        }
-    }
-    return check(lo) ? lo : lo - 1;
-}
-
-// =====================
-// === Binary Search Example: Template Check Function ===
-// =====================
-
 // Example use-case for placeholder check
 // Modify this based on the problem you are solving
 bool check(int x) {
@@ -347,6 +306,11 @@ bool check(int x) {
 // =====================
 // ===  Main Driver  ===
 // =====================
+
+void solve() {
+    // your logic goes here
+}
+
 int main() {
     setIO(); // Change filename as needed for file I/O
 
