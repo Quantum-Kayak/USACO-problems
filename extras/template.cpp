@@ -304,53 +304,85 @@ bool check(int x) {
 };
 
 // =====================
-// ===  Graph Search  ===
+// === Graph Search  ===
 // =====================
 
-vvi adj;
-vb visited;
-vi dist;
+int n, m;
+vector<vector<pair<int, int>>> adj_weighted;
+vector<vector<int>> adj_unweighted;
+
+void build_graph(bool weighted) {
+    cin >> n >> m;
+    if (weighted)
+        adj_weighted.assign(n, {});
+    else
+        adj_unweighted.assign(n, {});
+
+    for (int i = 0; i < m; ++i) {
+        int u, v;
+        cin >> u >> v;
+
+        if (weighted) {
+            int w;
+            cin >> w;
+            adj_weighted[u].push_back({v, w});
+            adj_weighted[v].push_back({u, w}); // if undirected
+        } else {
+            adj_unweighted[u].push_back(v);
+            adj_unweighted[v].push_back(u); // if undirected
+        }
+    }
+}
+
+//Unweighted Graph Search
+vector<bool> visited;
 
 void dfs(int u) {
     visited[u] = true;
-    for (int v : adj[u]) {
-        if (!visited[v])
-            dfs(v);
+    for (int v : adj_unweighted[u]) {
+        if (!visited[v]) dfs(v);
     }
-};
+}
+
+vector<int> dist;
 
 void bfs(int start) {
     queue<int> q;
+    dist.assign(n, -1);
     dist[start] = 0;
     q.push(start);
+
     while (!q.empty()) {
         int u = q.front(); q.pop();
-        for (int v : adj[u]) {
+        for (int v : adj_unweighted[u]) {
             if (dist[v] == -1) {
                 dist[v] = dist[u] + 1;
                 q.push(v);
             }
         }
     }
-};
+}
 
-void dijkstra(int start) {
-    dist.assign(sz(adj), INF32);
-    dist[start] = 0;
-    minpq<pii> pq; // {dist, node}
-    pq.push({0, start});
+//Weighted Graph Search
+void dijkstra(int src) {
+    dist.assign(n, INF32);
+    dist[src] = 0;
+
+    priority_queue<pii, vector<pii>, greater<pii>> pq;
+    pq.push({0, src});
 
     while (!pq.empty()) {
         auto [d, u] = pq.top(); pq.pop();
         if (d > dist[u]) continue;
-        for (auto &[v, w] : adj[u]) {
-            if (dist[u] + w < dist[v]) {
+
+        for (auto &[v, w] : adj_weighted[u]) {
+            if (dist[v] > dist[u] + w) {
                 dist[v] = dist[u] + w;
                 pq.push({dist[v], v});
             }
         }
     }
-};
+}
 
 // =====================
 // ===  Main Driver  ===
