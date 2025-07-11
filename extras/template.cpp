@@ -277,7 +277,7 @@ int binary_search_first_true(int lo, int hi, Func check) {
         }
     }
     return check(lo) ? lo : hi + 1;
-}
+};
 
 // Finds the largest x in [lo, hi] such that check(x) == true
 // Returns lo - 1 if no such x exists (i.e., all check(x) are false)
@@ -292,7 +292,7 @@ int binary_search_last_true(int lo, int hi, Func check) {
         }
     }
     return check(lo) ? lo : lo - 1;
-}
+};
 
 // Example use-case for placeholder check
 // Modify this based on the problem you are solving
@@ -301,7 +301,56 @@ bool check(int x) {
     // return (x * x >= target);  // Binary search square root
     // return (can_complete_in_time(x));  // Greedy scheduling
     return true; // default stub — always true (useless but compiles)
-}
+};
+
+// =====================
+// ===  Graph Search  ===
+// =====================
+
+vvi adj;
+vb visited;
+vi dist;
+
+void dfs(int u) {
+    visited[u] = true;
+    for (int v : adj[u]) {
+        if (!visited[v])
+            dfs(v);
+    }
+};
+
+void bfs(int start) {
+    queue<int> q;
+    dist[start] = 0;
+    q.push(start);
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+        for (int v : adj[u]) {
+            if (dist[v] == -1) {
+                dist[v] = dist[u] + 1;
+                q.push(v);
+            }
+        }
+    }
+};
+
+void dijkstra(int start) {
+    dist.assign(sz(adj), INF32);
+    dist[start] = 0;
+    minpq<pii> pq; // {dist, node}
+    pq.push({0, start});
+
+    while (!pq.empty()) {
+        auto [d, u] = pq.top(); pq.pop();
+        if (d > dist[u]) continue;
+        for (auto &[v, w] : adj[u]) {
+            if (dist[u] + w < dist[v]) {
+                dist[v] = dist[u] + w;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+};
 
 // =====================
 // ===  Main Driver  ===
