@@ -18,6 +18,8 @@ void solve() {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    freopen("problemname.in", "r", stdin);
+    freopen("problemname.out", "w", stdout);
 
     int t = 1;
     // cin >> t;
