@@ -264,6 +264,87 @@ struct DSU {
 };
 
 // =====================
+// === Binary Search Utilities ===
+// =====================
+
+// Finds the smallest x in [lo, hi] such that check(x) == true
+// Returns hi + 1 if no such x exists (i.e., all check(x) are false)
+template<typename Func>
+int binary_search_first_true(int lo, int hi, Func check) {
+    while (lo < hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (check(mid)) {
+            hi = mid;
+        } else {
+            lo = mid + 1;
+        }
+    }
+    return check(lo) ? lo : hi + 1;
+}
+
+// Finds the largest x in [lo, hi] such that check(x) == true
+// Returns lo - 1 if no such x exists (i.e., all check(x) are false)
+template<typename Func>
+int binary_search_last_true(int lo, int hi, Func check) {
+    while (lo < hi) {
+        int mid = lo + (hi - lo + 1) / 2; // upper mid to prevent infinite loop
+        if (check(mid)) {
+            lo = mid;
+        } else {
+            hi = mid - 1;
+        }
+    }
+    return check(lo) ? lo : lo - 1;
+}
+
+// =====================
+// === Binary Search Utilities ===
+// =====================
+
+// Finds the smallest x in [lo, hi] such that check(x) == true
+// Returns hi + 1 if no such x exists (i.e., all check(x) are false)
+template<typename Func>
+int binary_search_first_true(int lo, int hi, Func check) {
+    while (lo < hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (check(mid)) {
+            hi = mid;
+        } else {
+            lo = mid + 1;
+        }
+    }
+    return check(lo) ? lo : hi + 1;
+}
+
+// Finds the largest x in [lo, hi] such that check(x) == true
+// Returns lo - 1 if no such x exists (i.e., all check(x) are false)
+template<typename Func>
+int binary_search_last_true(int lo, int hi, Func check) {
+    while (lo < hi) {
+        int mid = lo + (hi - lo + 1) / 2; // upper mid to prevent infinite loop
+        if (check(mid)) {
+            lo = mid;
+        } else {
+            hi = mid - 1;
+        }
+    }
+    return check(lo) ? lo : lo - 1;
+}
+
+// =====================
+// === Binary Search Example: Template Check Function ===
+// =====================
+
+// Example use-case for placeholder check
+// Modify this based on the problem you are solving
+bool check(int x) {
+    // For example:
+    // return (x * x >= target);  // Binary search square root
+    // return (can_complete_in_time(x));  // Greedy scheduling
+    return true; // default stub — always true (useless but compiles)
+}
+
+// =====================
 // ===  Main Driver  ===
 // =====================
 int main() {
