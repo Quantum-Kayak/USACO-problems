@@ -1,9 +1,5 @@
 Billboard
 
-- [Bronze Problems](#bronze-problems)
-- [Silver Problems](#silver-problems)
-
-
 Billboard II
 
 Distinct Numbers
