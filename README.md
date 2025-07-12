@@ -7,6 +7,7 @@ Welcome to my archive of solved USACO problems, organized for brutal clarity, lo
 - 🦥 Sometimes a `TLE.cpp` cause I was too slow
 - ⌚ Some problems will have multiple solutions as part of mock contests, marked by `pracn`
 - 🗂 Sorted by **division**, **difficulty**, and **problem metadata**
+- 
 ![C++ Main](https://img.shields.io/badge/-main-blue?logo=cplusplus&logoColor=white&label=C%2B%2B)
 ---
 
