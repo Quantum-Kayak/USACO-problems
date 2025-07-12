@@ -1,93 +1,93 @@
-billboard
+Billboard
 
-billboardII
+Billboard II
 
-distinctnumbers
+Distinct Numbers
 
-doyouknowyourabcs
+Do You Know Your ABCs
 
-speedingticket
+Speeding Ticket
 
-whereami
+Where Am I
 
-milkfactory
+Milk Factory
 
-photoshoot
+Photoshoot
 
-buildingroads
+Building Roads
 
-cowgymnastics
+Cow Gymnastics
 
-race
+Race
 
-appledivision
+Apple Division
 
-associativearray
+Associative Array
 
-astralsuperpositioning
+Astral Superpositioning
 
-makingmexes
+Making MEXes
 
-mixingmilk
+Mixing Milk
 
-thebovineshuffle
+The Bovine Shuffle
 
-thebucketlist
+The Bucket List
 
-thelostcow
+The Lost Cow
 
-wordprocessor
+Word Processor
 
-drought
+Drought
 
-hoofpapersscissorsminusone
+Hoof, Paper, Scissors - Minus One
 
-leaders
+Leaders
 
-milkmeasurement
+Milk Measurement
 
-thegreatrevegetation
+The Great Revegetation
 
-backandforth
+Back and Forth
 
-hoofpaperscissors
+Hoof, Paper, Scissors
 
-measuringtraffic
+Measuring Traffic
 
-socialdistancingI
+Social Distancing I
 
-teamtictactoe
+Team Tic-Tac-Toe
 
-hoofball
+Hoofball
 
-roundaboutrounding
+Roundabout Rounding
 
-fenceplanning
+Fence Planning
 
-milkvisits
+Milk Visits
 
-moocast
+Moocast
 
-mootube
+Moovie Mooving (Mootube)
 
-grassplanting
+Grass Planting
 
-kayaking
+Kayaking
 
-wormholesort
+Wormhole Sort
 
-convention
+Convention
 
-pairedup
+Paired Up
 
-berrypicking
+Berry Picking
 
-countinghaybales
+Counting Haybales
 
-badge
+Badge
 
-breedcounting
+Breed Counting
 
-staticrangesum
+Static Range Sum
 
-studyingalgorithms
+Studying Algorithms
