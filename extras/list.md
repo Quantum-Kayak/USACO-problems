@@ -1,87 +1,93 @@
-square Pasture
+billboard
 
-Block Game
+billboardII
 
-The Cow-Signal
+distinctnumbers
 
-Billboard
+doyouknowyourabcs
 
-Billboard II
+speedingticket
 
-Do You Know Your ABCs?
+whereami
 
-Distinct Numbers
+milkfactory
 
-Associative Array
+photoshoot
 
-Mixing Milk
+buildingroads
 
-Milk Factory
+cowgymnastics
 
-The Bucket List
+race
 
-The Lost Cow
+appledivision
 
-Hoofball
+associativearray
 
-Making MEXes
+astralsuperpositioning
 
-Hoof, Paper, Scissors
+makingmexes
 
-Word Processor
+mixingmilk
 
-Measuring Traffic
+thebovineshuffle
 
-Leaders
+thebucketlist
 
-Roundabout Rounding
+thelostcow
 
-The Great Revegetation
+wordprocessor
 
-Drought
+drought
 
-Astral Superpositioning
+hoofpapersscissorsminusone
 
-Apple Division
+leaders
 
-Team Tic-Tac-Toe
+milkmeasurement
 
-Back and Forth
+thegreatrevegetation
 
-Building Roads
+backandforth
 
-Where Am I?
+hoofpaperscissors
 
-Cow Gymnastics
+measuringtraffic
 
-Speeding Ticket
+socialdistancingI
 
-Photoshoot
+teamtictactoe
 
-Kayaking
+hoofball
 
-Paired Up
+roundaboutrounding
 
-Convention
+fenceplanning
 
-Studying Algorithms
+milkvisits
 
-Static Range Sum
+moocast
 
-Badge
+mootube
 
-Breed Counting
+grassplanting
 
-Wormhole Sort (and TLE version)
+kayaking
 
-Milk Visits (BFS & DFS versions)
+wormholesort
 
-Fence Planning
+convention
 
-Moocast
+pairedup
 
-Moovie Mooving (aka Mootube)
+berrypicking
 
-Grass Planting
+countinghaybales
 
-Counting Haybales
+badge
+
+breedcounting
+
+staticrangesum
+
+studyingalgorithms
