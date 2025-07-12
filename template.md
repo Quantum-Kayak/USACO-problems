@@ -1,5 +1,9 @@
 # USACO template🐮
 ![C++ Main](https://img.shields.io/badge/C++-main-blue?logo=c%2B%2B&logoColor=white)
+![C++ Main](https://img.shields.io/badge/-main-blue?logo=cplusplus&logoColor=white&label=C%2B%2B)
+![C++ Main](https://img.shields.io/badge/-main-000000?logo=cplusplus&logoColor=00ffe1&label=C%2B%2B)
+![C++ Main](https://img.shields.io/badge/-main-1e1e1e?logo=cplusplus&logoColor=61dafb&label=C%2B%2B&style=for-the-badge)
+
 
 [📋 Copy raw template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
 
