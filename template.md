@@ -1,5 +1,5 @@
 # USACO template🐮
-**ctrl a ctrl c to copy**
+![C++ Main](https://img.shields.io/badge/C++-main-blue?logo=c%2B%2B&logoColor=white)
 
 [📋 Copy raw template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
 
