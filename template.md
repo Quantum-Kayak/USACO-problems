@@ -1,9 +1,17 @@
 # USACO template🐮
 ![C++ Main](https://img.shields.io/badge/-main-blue?logo=cplusplus&logoColor=white&label=C%2B%2B)
 
+## Raw
+
 [📋 Copy raw template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
 
 [📋 Copy minimal template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/minimal.cpp)
+
+## links
+
+[📋 Copy raw template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/template.cpp)
+
+[📋 Copy minimal template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/minimal.cpp)
 
 [Progress Tracker](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/list.md)
 
