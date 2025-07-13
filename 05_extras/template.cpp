@@ -117,28 +117,28 @@ inline char next() {
 
 inline int r_int() {
     int x = 0, neg = 0;
-    char c = next_char();
+    char c = next();
     while (c < '0' || c > '9') {
         if (c == '-') neg = 1;
-        c = next_char();
+        c = next();
     }
     while ('0' <= c && c <= '9') {
         x = x * 10 + (c - '0');
-        c = next_char();
+        c = next();
     }
     return neg ? -x : x;
 }
 
 inline long long r_ll() {
     long long x = 0; int neg = 0;
-    char c = next_char();
+    char c = next();
     while (c < '0' || c > '9') {
         if (c == '-') neg = 1;
-        c = next_char();
+        c = next();
     }
     while ('0' <= c && c <= '9') {
         x = x * 10 + (c - '0');
-        c = next_char();
+        c = next();
     }
     return neg ? -x : x;
 }
