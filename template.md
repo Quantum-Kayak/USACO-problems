@@ -11,9 +11,9 @@
 
 ## links
 
-[template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/05_extras/template.cpp)
+[tier I](https://github.com/Quantum-Kayak/USACO-problems/blob/main/05_extras/template.cpp)
 
-[minimal template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/05_extras/minimal.cpp)
+[tier II](https://github.com/Quantum-Kayak/USACO-problems/blob/main/05_extras/minimal.cpp)
 
 [Progress Tracker](https://github.com/Quantum-Kayak/USACO-problems/blob/main/05_extras/list.md)
 
