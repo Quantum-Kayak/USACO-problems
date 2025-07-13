@@ -5,7 +5,7 @@
 
 [📋 Copy raw tier I](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
 
-[📋 Copy raw tier I.S](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/tier I.S.cpp)
+[📋 Copy raw tier I.S](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/tierI.S.cpp)
 
 [📋 Copy raw tier II](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/minimal.cpp)
 
