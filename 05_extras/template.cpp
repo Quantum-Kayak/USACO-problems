@@ -201,6 +201,7 @@ struct pair_hash {
 #define s second
 #define sz(x) (int)(x).size()
 #define each(a, x) for (auto& a : x)
+const int MOD = 1e9+7;
 
 // =====================
 // ===  Disjoint Set Union (DSU)  ===
