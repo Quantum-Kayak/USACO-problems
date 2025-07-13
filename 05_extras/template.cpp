@@ -101,17 +101,17 @@ void setIO(const string &name = "") {
 // =====================
 // ===  Fread Read  ===
 // =====================
-
-char buf[1 << 20]; // 1MB buffer (adjust as needed)
-int pos = 0, len = 0;
+// ========== FREAD Input ==========
+char inbuf[1 << 20];
+int inpos = 0, inlen = 0;
 
 inline char next_char() {
-    if (pos == len) {
-        pos = 0;
-        len = fread(buf, 1, sizeof(buf), stdin);
-        if (len == 0) return EOF;
+    if (inpos == inlen) {
+        inpos = 0;
+        inlen = fread(inbuf, 1, sizeof(inbuf), stdin);
+        if (inlen == 0) return EOF;
     }
-    return buf[pos++];
+    return inbuf[inpos++];
 }
 
 inline int read_int() {
@@ -121,11 +121,69 @@ inline int read_int() {
         if (c == '-') neg = 1;
         c = next_char();
     }
-    while (c >= '0' && c <= '9') {
+    while ('0' <= c && c <= '9') {
         x = x * 10 + (c - '0');
         c = next_char();
     }
     return neg ? -x : x;
+}
+
+inline long long read_ll() {
+    long long x = 0; int neg = 0;
+    char c = next_char();
+    while (c < '0' || c > '9') {
+        if (c == '-') neg = 1;
+        c = next_char();
+    }
+    while ('0' <= c && c <= '9') {
+        x = x * 10 + (c - '0');
+        c = next_char();
+    }
+    return neg ? -x : x;
+}
+
+// ========== Buffered Output ==========
+char outbuf[1 << 20];
+int outp = 0;
+
+inline void write_char(char c) {
+    outbuf[outp++] = c;
+}
+
+inline void write_int(int x) {
+    if (x == 0) {
+        outbuf[outp++] = '0';
+        return;
+    }
+
+    if (x < 0) {
+        outbuf[outp++] = '-';
+        x = -x;
+    }
+
+    char tmp[12];
+    int len = 0;
+
+    while (x) {
+        tmp[len++] = (x % 10) + '0';
+        x /= 10;
+    }
+
+    for (int i = len - 1; i >= 0; --i)
+        outbuf[outp++] = tmp[i];
+}
+
+inline void write_string(const char* s) {
+    while (*s) outbuf[outp++] = *s++;
+}
+
+inline void write_string(const std::string &s) {
+    for (char c : s) outbuf[outp++] = c;
+}
+
+inline void flush_output() {
+    fwrite(outbuf, 1, outp, stdout);
+    outp = 0;
 }
 
 // =====================
