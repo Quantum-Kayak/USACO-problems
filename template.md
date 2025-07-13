@@ -3,19 +3,19 @@
 
 ## Raw
 
-[📋 Copy raw tier I](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
+[📋 Copy raw tier I](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/05_extras/template.cpp)
 
-[📋 Copy raw tier I.S](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/tierI.S.cpp)
+[📋 Copy raw tier I.S](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/05_extras/tierI.S.cpp)
 
-[📋 Copy raw tier II](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/minimal.cpp)
+[📋 Copy raw tier II](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/05_extras/minimal.cpp)
 
 ## links
 
-[template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/template.cpp)
+[template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/05_extras/template.cpp)
 
-[minimal template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/minimal.cpp)
+[minimal template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/05_extras/minimal.cpp)
 
-[Progress Tracker](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/list.md)
+[Progress Tracker](https://github.com/Quantum-Kayak/USACO-problems/blob/main/05_extras/list.md)
 
 # 🐄 Problem Name – USACO [Division] ([Month Year])
 
