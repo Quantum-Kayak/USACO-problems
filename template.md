@@ -3,9 +3,10 @@
 
 ## Raw
 
-[📋 Copy raw template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
+[📋 Copy raw tier I](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/template.cpp)
 
-[📋 Copy minimal template](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/minimal.cpp)
+
+[📋 Copy raw tier II](https://raw.githubusercontent.com/Quantum-Kayak/USACO-problems/main/extras/minimal.cpp)
 
 ## links
 
