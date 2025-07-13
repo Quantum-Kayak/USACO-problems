@@ -108,3 +108,11 @@ Now with hyperlinks that don't feel like a Linux error log.
 - [x] [Breed Counting](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/unstarred/veryeasy/breedcounting/breedcounting.cpp)
 - [x] [Static Range Sum](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/unstarred/veryeasy/staticrangesum/staticrangesum.cpp)
 - [x] [Studying Algorithms](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/unstarred/veryeasy/studyingalgorithms/studyingalgorithms.cpp)
+
+## 🥇Gold
+
+### ❌ Unstarred
+
+#### Very Easy
+- [x] [Minimizing Coins](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/veryeasy/minimizingcoins/minimizingcoins.cpp)
+- [x] [Dice Combinations](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/veryeasy/dicecombinations/dicecombinations.cpp)
