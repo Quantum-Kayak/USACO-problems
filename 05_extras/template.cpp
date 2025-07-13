@@ -101,11 +101,12 @@ void setIO(const string &name = "") {
 // =====================
 // ===  Fread Read  ===
 // =====================
+
 // ========== FREAD Input ==========
 char inbuf[1 << 20];
 int inpos = 0, inlen = 0;
 
-inline char next_char() {
+inline char next() {
     if (inpos == inlen) {
         inpos = 0;
         inlen = fread(inbuf, 1, sizeof(inbuf), stdin);
@@ -114,7 +115,7 @@ inline char next_char() {
     return inbuf[inpos++];
 }
 
-inline int read_int() {
+inline int r_int() {
     int x = 0, neg = 0;
     char c = next_char();
     while (c < '0' || c > '9') {
@@ -128,7 +129,7 @@ inline int read_int() {
     return neg ? -x : x;
 }
 
-inline long long read_ll() {
+inline long long r_ll() {
     long long x = 0; int neg = 0;
     char c = next_char();
     while (c < '0' || c > '9') {
@@ -146,11 +147,11 @@ inline long long read_ll() {
 char outbuf[1 << 20];
 int outp = 0;
 
-inline void write_char(char c) {
+inline void w_char(char c) {
     outbuf[outp++] = c;
 }
 
-inline void write_int(int x) {
+inline void w_int(int x) {
     if (x == 0) {
         outbuf[outp++] = '0';
         return;
@@ -173,15 +174,15 @@ inline void write_int(int x) {
         outbuf[outp++] = tmp[i];
 }
 
-inline void write_string(const char* s) {
+inline void w_string(const char* s) {
     while (*s) outbuf[outp++] = *s++;
 }
 
-inline void write_string(const std::string &s) {
+inline void w_string(const std::string &s) {
     for (char c : s) outbuf[outp++] = c;
 }
 
-inline void flush_output() {
+inline void flush() {
     fwrite(outbuf, 1, outp, stdout);
     outp = 0;
 }
@@ -521,6 +522,6 @@ void solve() {
 
 int main() {
     setIO(); // Change filename as needed for file I/O
-    flush_output();
+    flush();
     return 0;
 }
