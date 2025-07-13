@@ -9,9 +9,9 @@
 
 ## links
 
-[📋 Copy raw template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/template.cpp)
+[template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/template.cpp)
 
-[📋 Copy minimal template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/minimal.cpp)
+[minimal template](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/minimal.cpp)
 
 [Progress Tracker](https://github.com/Quantum-Kayak/USACO-problems/blob/main/extras/list.md)
 
