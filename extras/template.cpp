@@ -385,6 +385,44 @@ void dijkstra(int src) {
 }
 
 // =====================
+// ===  0/1 Knapsack DP ===
+// =====================
+
+// 2D Version — reconstructable
+int knapsack_2D(int n, int W, const vi &wt, const vi &val, vi &items_taken) {
+    vvi dp(n + 1, vi(W + 1, 0));
+
+    for (int i = 1; i <= n; ++i) {
+        for (int w = 0; w <= W; ++w) {
+            dp[i][w] = dp[i - 1][w];
+            if (wt[i - 1] <= w)
+                chmax(dp[i][w], val[i - 1] + dp[i - 1][w - wt[i - 1]]);
+        }
+    }
+
+    // Optional: Reconstruct taken items
+    items_taken.clear();
+    int w = W;
+    for (int i = n; i >= 1; --i) {
+        if (dp[i][w] != dp[i - 1][w]) {
+            items_taken.pb(i - 1);  // item index
+            w -= wt[i - 1];
+        }
+    }
+    reverse(all(items_taken));
+    return dp[n][W];
+}
+
+// 1D Version — fast & memory-efficient
+int knapsack_1D(int n, int W, const vi &wt, const vi &val) {
+    vi dp(W + 1, 0);
+    for (int i = 0; i < n; ++i)
+        for (int w = W; w >= wt[i]; --w)
+            chmax(dp[w], val[i] + dp[w - wt[i]]);
+    return dp[W];
+}
+
+// =====================
 // ===  Main Driver  ===
 // =====================
 
