@@ -1,6 +1,6 @@
 # 🐄 USACO Problems Repository
 
-[Link to Templates](https://github.com/Quantum-Kayak/USACO-problems/blob/main/template.cpp)
+[Link to Templates](https://github.com/Quantum-Kayak/USACO-problems/blob/main/template.md)
 
 
 Welcome to my archive of solved USACO problems, organized for brutal clarity, long-term reference, and future self-roasting. Each problem includes:
