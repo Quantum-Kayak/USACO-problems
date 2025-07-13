@@ -99,6 +99,36 @@ void setIO(const string &name = "") {
 }
 
 // =====================
+// ===  Fread Read  ===
+// =====================
+
+char buf[1 << 20]; // 1MB buffer (adjust as needed)
+int pos = 0, len = 0;
+
+inline char next_char() {
+    if (pos == len) {
+        pos = 0;
+        len = fread(buf, 1, sizeof(buf), stdin);
+        if (len == 0) return EOF;
+    }
+    return buf[pos++];
+}
+
+inline int read_int() {
+    int x = 0, neg = 0;
+    char c = next_char();
+    while (c < '0' || c > '9') {
+        if (c == '-') neg = 1;
+        c = next_char();
+    }
+    while (c >= '0' && c <= '9') {
+        x = x * 10 + (c - '0');
+        c = next_char();
+    }
+    return neg ? -x : x;
+}
+
+// =====================
 // ===  Debug Utilities  ===
 // =====================
 #ifdef LOCAL
@@ -433,6 +463,6 @@ void solve() {
 
 int main() {
     setIO(); // Change filename as needed for file I/O
-
+    flush_output();
     return 0;
 }
