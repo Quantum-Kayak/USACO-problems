@@ -56,7 +56,7 @@ template<class T>
 using minpq = priority_queue<T, vector<T>, greater<T>>;
 
 // =====================
-// ===  Constants  ===
+// ===   Constants   ===
 // =====================
 constexpr ll  INF64 = (ll)4e18;        // Very large number for 64-bit integer
 constexpr int INF32 = 1e9+7;           // Common large number for 32-bit
@@ -66,7 +66,7 @@ const int MOD2 = 1e9 + 9;
 const int BASE = 127;
 const int MOD = MOD1;
 // =====================
-// ===  Fast I/O Setup  ===
+// === Fast I/O Setup ===
 // =====================
 ifstream fin;
 ofstream fout;
@@ -102,10 +102,9 @@ void setIO(const string &name = "") {
 }
 
 // =====================
-// ===  Fread Read  ===
+// ===   Fread I/O   ===
 // =====================
 
-// ========== FREAD Input ==========
 char inbuf[1 << 20];
 int inpos = 0, inlen = 0;
 
@@ -118,6 +117,9 @@ inline char next() {
     return inbuf[inpos++];
 }
 
+// === Input ===
+
+// Integer
 inline int r_int() {
     int x = 0, neg = 0;
     char c = next();
@@ -132,6 +134,7 @@ inline int r_int() {
     return neg ? -x : x;
 }
 
+// Long long
 inline long long r_ll() {
     long long x = 0; int neg = 0;
     char c = next();
@@ -146,7 +149,38 @@ inline long long r_ll() {
     return neg ? -x : x;
 }
 
-// ========== Buffered Output ==========
+// Char (skip whitespace)
+inline char r_char() {
+    char c = next();
+    while (c == ' ' || c == '\n' || c == '\r') c = next();
+    return c;
+}
+
+// Word (whitespace-delimited)
+inline string r_string() {
+    string s;
+    char c = next();
+    while (c == ' ' || c == '\n' || c == '\r') c = next();
+    while (c != ' ' && c != '\n' && c != '\r' && c != EOF) {
+        s += c;
+        c = next();
+    }
+    return s;
+}
+
+// Full line (newline-delimited)
+inline string r_line() {
+    string s;
+    char c = next();
+    while (c == '\n' || c == '\r') c = next(); // skip leading newlines
+    while (c != '\n' && c != '\r' && c != EOF) {
+        s += c;
+        c = next();
+    }
+    return s;
+}
+
+// === Buffered Output ===
 char outbuf[1 << 20];
 int outp = 0;
 
@@ -154,35 +188,48 @@ inline void w_char(char c) {
     outbuf[outp++] = c;
 }
 
+inline void w_string(const char* s) {
+    while (*s) outbuf[outp++] = *s++;
+}
+
+inline void w_string(const string &s) {
+    for (char c : s) outbuf[outp++] = c;
+}
+
 inline void w_int(int x) {
     if (x == 0) {
         outbuf[outp++] = '0';
         return;
     }
-
     if (x < 0) {
         outbuf[outp++] = '-';
         x = -x;
     }
-
     char tmp[12];
     int len = 0;
-
     while (x) {
         tmp[len++] = (x % 10) + '0';
         x /= 10;
     }
-
-    for (int i = len - 1; i >= 0; --i)
-        outbuf[outp++] = tmp[i];
+    while (len--) outbuf[outp++] = tmp[len];
 }
 
-inline void w_string(const char* s) {
-    while (*s) outbuf[outp++] = *s++;
-}
-
-inline void w_string(const std::string &s) {
-    for (char c : s) outbuf[outp++] = c;
+inline void w_ll(long long x) {
+    if (x == 0) {
+        outbuf[outp++] = '0';
+        return;
+    }
+    if (x < 0) {
+        outbuf[outp++] = '-';
+        x = -x;
+    }
+    char tmp[20];
+    int len = 0;
+    while (x) {
+        tmp[len++] = (x % 10) + '0';
+        x /= 10;
+    }
+    while (len--) outbuf[outp++] = tmp[len];
 }
 
 inline void flush() {
@@ -270,7 +317,7 @@ template<class T> int ub(const vector<T>& v,const T& x){ return upper_bound(v.be
 template<class T> T ceil_div(T a,T b){ return (a+b-1)/b; }
 template<class T> T floor_div(T a, T b) { return a / b - ((a ^ b) < 0 && a % b); }
 
-// string slices
+// string stuff
 vector<string> chunk(const string& s, int k) {
     vector<string> chunks;
     for (int i = 0; i < (int)s.size(); i += k) {
@@ -287,6 +334,15 @@ bool is_rep(const string& s, int k) {
             return false;
     }
     return true;
+}
+
+vector<string> all_subs(const string& s) {
+    vector<string> res;
+    int n = s.size();
+    for (int i = 0; i < n; ++i)
+        for (int j = i; j < n; ++j)
+            res.push_back(s.substr(i, j - i + 1));
+    return res;
 }
 
 ll powmod(ll a,ll e,ll mod){
@@ -526,7 +582,7 @@ int knapsack_1D(int n, int W, const vi &wt, const vi &val) {
 }
 
 // =====================
-// ===  Custome Hashes  ===
+// ===  Custom Hashes  ===
 // =====================
 
 struct custom_hash {
