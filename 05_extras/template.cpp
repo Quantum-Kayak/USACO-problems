@@ -580,6 +580,49 @@ struct DoubleHash {
 };
 
 // =====================
+// ===  Prefix Sums  ===
+// =====================
+
+// 1D sums
+vi build_prefix(const vi& a) {
+    int n = sz(a);
+    vi prefix(n + 1, 0);
+    for (int i = 0; i < n; ++i)
+        prefix[i + 1] = prefix[i] + a[i];
+    return prefix;
+}
+
+int range_sum(const vi& prefix, int l, int r) {
+    // returns sum of a[l..r], inclusive
+    return prefix[r + 1] - prefix[l];
+}
+
+// 2D sums
+vvi build_prefix_2D(const vvi& grid) {
+    int n = sz(grid), m = sz(grid[0]);
+    vvi ps(n + 1, vi(m + 1, 0));
+
+    for (int i = 1; i <= n; ++i)
+        for (int j = 1; j <= m; ++j)
+            ps[i][j] = grid[i - 1][j - 1]
+                     + ps[i - 1][j]
+                     + ps[i][j - 1]
+                     - ps[i - 1][j - 1];
+
+    return ps;
+}
+
+int range_sum_2D(const vvi& ps, int x1, int y1, int x2, int y2) {
+    // inclusive rectangle from (x1,y1) to (x2,y2)
+    x1++, y1++, x2++, y2++;
+    return ps[x2][y2]
+         - ps[x1 - 1][y2]
+         - ps[x2][y1 - 1]
+         + ps[x1 - 1][y1 - 1];
+}
+
+
+// =====================
 // ===  Main Driver  ===
 // =====================
 
