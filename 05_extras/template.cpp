@@ -645,8 +645,9 @@ struct DoubleHash {
         int n = s.size();
         h1.assign(n + 1, 0); h2.assign(n + 1, 0);
         p1.assign(n + 1, 1); p2.assign(n + 1, 1);
-        for (int i = 0; i < n; i++) {
-            h1[i + 1] = (1LL * h1[i] * BASE + s[i]) % 1;
+
+        for (int i = 0; i < n; ++i) {
+            h1[i + 1] = (1LL * h1[i] * BASE + s[i]) % MOD1;
             h2[i + 1] = (1LL * h2[i] * BASE + s[i]) % MOD2;
             p1[i + 1] = (1LL * p1[i] * BASE) % MOD1;
             p2[i + 1] = (1LL * p2[i] * BASE) % MOD2;
@@ -654,8 +655,8 @@ struct DoubleHash {
     }
 
     pair<int, int> get(int l, int r) {
-        int x1 = (h1[r + 1] - 1LL * h1[l] * p1[r - l + 1] % MOD1 + MOD1) % MOD1;
-        int x2 = (h2[r + 1] - 1LL * h2[l] * p2[r - l + 1] % MOD2 + MOD2) % MOD2;
+        int x1 = (1LL * h1[r + 1] - 1LL * h1[l] * p1[r - l + 1] % MOD1 + MOD1) % MOD1;
+        int x2 = (1LL * h2[r + 1] - 1LL * h2[l] * p2[r - l + 1] % MOD2 + MOD2) % MOD2;
         return {x1, x2};
     }
 };
