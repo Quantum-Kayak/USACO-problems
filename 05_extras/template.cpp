@@ -64,6 +64,7 @@ constexpr int MX    = 2e5 + 5;         // Useful upper bound for array sizes
 const int MOD1 = 1e9 + 7;
 const int MOD2 = 1e9 + 9;
 const int BASE = 127;
+const int MOD = MOD1;
 // =====================
 // ===  Fast I/O Setup  ===
 // =====================
