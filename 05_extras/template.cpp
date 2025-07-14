@@ -513,6 +513,92 @@ int knapsack_1D(int n, int W, const vi &wt, const vi &val) {
 }
 
 // =====================
+// ===  Hashes  ===
+// =====================
+
+long long compute_hash(string s) {
+    const int p = 31;
+    const int m = 1e9 + 9;
+    long long hash_value = 0;
+    long long p_pow = 1;
+
+    for (char c : s) {
+        int val = c - 'a' + 1;
+        hash_value = (hash_value + val * p_pow) % m;
+        p_pow = (p_pow * p) % m;
+    }
+
+    return hash_value;
+}
+
+struct custom_hash {
+    static uint64_t splitmix64(uint64_t x) {
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+
+    size_t operator()(uint64_t x) const {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+
+    template<typename T1, typename T2>
+    size_t operator()(pair<T1, T2> const& p) const {
+        uint64_t h1 = operator()(static_cast<uint64_t>(p.first));
+        uint64_t h2 = operator()(static_cast<uint64_t>(p.second));
+        return h1 ^ (h2 << 1);
+    }
+};
+
+struct RollingHash {
+    static const ll MOD = 1e9+7;
+    static const ll BASE = 31;
+    vector<ll> h, p;
+
+    RollingHash(const string& s) {
+        int n = s.size();
+        h.assign(n + 1, 0);
+        p.assign(n + 1, 1);
+        for (int i = 0; i < n; ++i) {
+            h[i + 1] = (h[i] * BASE + s[i] - 'a' + 1) % MOD;
+            p[i + 1] = (p[i] * BASE) % MOD;
+        }
+    }
+
+    ll get(int l, int r) { // 0-based, [l..r]
+        return (h[r + 1] - h[l] * p[r - l + 1] % MOD + MOD) % MOD;
+    }
+};
+
+struct DoubleHash {
+    static const int MOD1 = 1e9 + 7;
+    static const int MOD2 = 1e9 + 9;
+    static const int BASE = 127;
+
+    vector<int> h1, h2, p1, p2;
+
+    DoubleHash(const string& s) {
+        int n = s.size();
+        h1.assign(n + 1, 0); h2.assign(n + 1, 0);
+        p1.assign(n + 1, 1); p2.assign(n + 1, 1);
+        for (int i = 0; i < n; i++) {
+            h1[i + 1] = (1LL * h1[i] * BASE + s[i]) % MOD1;
+            h2[i + 1] = (1LL * h2[i] * BASE + s[i]) % MOD2;
+            p1[i + 1] = (1LL * p1[i] * BASE) % MOD1;
+            p2[i + 1] = (1LL * p2[i] * BASE) % MOD2;
+        }
+    }
+
+    pair<int, int> get(int l, int r) {
+        int x1 = (h1[r + 1] - 1LL * h1[l] * p1[r - l + 1] % MOD1 + MOD1) % MOD1;
+        int x2 = (h2[r + 1] - 1LL * h2[l] * p2[r - l + 1] % MOD2 + MOD2) % MOD2;
+        return {x1, x2};
+    }
+};
+
+// =====================
 // ===  Main Driver  ===
 // =====================
 
