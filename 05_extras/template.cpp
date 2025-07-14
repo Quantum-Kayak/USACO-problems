@@ -270,6 +270,25 @@ template<class T> int ub(const vector<T>& v,const T& x){ return upper_bound(v.be
 template<class T> T ceil_div(T a,T b){ return (a+b-1)/b; }
 template<class T> T floor_div(T a, T b) { return a / b - ((a ^ b) < 0 && a % b); }
 
+// string slices
+vector<string> chunk_str(const string& s, int k) {
+    vector<string> chunks;
+    for (int i = 0; i + k <= (int)s.size(); i += k) {
+        chunks.push_back(s.substr(i, k));
+    }
+    return chunks;
+}
+
+bool is_rep(const string& s, int k) {
+    if (s.size() % k != 0) return false;
+    string base = s.substr(0, k);
+    for (int i = k; i < (int)s.size(); i += k) {
+        if (s.substr(i, k) != base)
+            return false;
+    }
+    return true;
+}
+
 ll powmod(ll a,ll e,ll mod){
     ll r=1;
     for(;e;e>>=1,a=a*a%mod) if(e&1) r=r*a%mod;
