@@ -28,7 +28,6 @@
 #include <array>        // fixed-size array with bounds checking
 #include <fstream>      // file I/O (for testing maybe)
 #include <iomanip>      // manipulators for I/O formatting
-#include <sstream>      // string streams (for the deranged)
 #include <numeric>      // accumulate, iota, etc.
 #include <cctype>       // char functions like isdigit, isalpha, etc.
 #include <cstdint>
@@ -61,7 +60,9 @@ using minpq = priority_queue<T, vector<T>, greater<T>>;
 constexpr ll  INF64 = (ll)4e18;        // Very large number for 64-bit integer
 constexpr int INF32 = 1e9+7;           // Common large number for 32-bit
 constexpr int MX    = 2e5 + 5;         // Useful upper bound for array sizes
-
+const int MOD1 = 1e9 + 7;
+const int MOD2 = 1e9 + 9;
+const int BASE = 127;
 // =====================
 // ===  Fast I/O Setup  ===
 // =====================
@@ -290,7 +291,6 @@ struct pair_hash {
 #define s second
 #define sz(x) (int)(x).size()
 #define each(a, x) for (auto& a : x)
-const int MOD = 1e9+7;
 
 // =====================
 // ===  Disjoint Set Union (DSU)  ===
@@ -516,21 +516,6 @@ int knapsack_1D(int n, int W, const vi &wt, const vi &val) {
 // ===  Hashes  ===
 // =====================
 
-long long compute_hash(string s) {
-    const int p = 31;
-    const int m = 1e9 + 9;
-    long long hash_value = 0;
-    long long p_pow = 1;
-
-    for (char c : s) {
-        int val = c - 'a' + 1;
-        hash_value = (hash_value + val * p_pow) % m;
-        p_pow = (p_pow * p) % m;
-    }
-
-    return hash_value;
-}
-
 struct custom_hash {
     static uint64_t splitmix64(uint64_t x) {
         x += 0x9e3779b97f4a7c15;
@@ -553,8 +538,6 @@ struct custom_hash {
 };
 
 struct RollingHash {
-    static const ll MOD = 1e9+7;
-    static const ll BASE = 31;
     vector<ll> h, p;
 
     RollingHash(const string& s) {
@@ -573,10 +556,6 @@ struct RollingHash {
 };
 
 struct DoubleHash {
-    static const int MOD1 = 1e9 + 7;
-    static const int MOD2 = 1e9 + 9;
-    static const int BASE = 127;
-
     vector<int> h1, h2, p1, p2;
 
     DoubleHash(const string& s) {
@@ -584,7 +563,7 @@ struct DoubleHash {
         h1.assign(n + 1, 0); h2.assign(n + 1, 0);
         p1.assign(n + 1, 1); p2.assign(n + 1, 1);
         for (int i = 0; i < n; i++) {
-            h1[i + 1] = (1LL * h1[i] * BASE + s[i]) % MOD1;
+            h1[i + 1] = (1LL * h1[i] * BASE + s[i]) % 1;
             h2[i + 1] = (1LL * h2[i] * BASE + s[i]) % MOD2;
             p1[i + 1] = (1LL * p1[i] * BASE) % MOD1;
             p2[i + 1] = (1LL * p2[i] * BASE) % MOD2;
