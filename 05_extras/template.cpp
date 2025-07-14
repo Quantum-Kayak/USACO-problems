@@ -268,6 +268,7 @@ template<class T> inline bool chmax(T& a,const T& b){ return b>a ? a=b,1:0; }
 template<class T> int lb(const vector<T>& v,const T& x){ return lower_bound(v.begin(),v.end(),x)-v.begin(); }
 template<class T> int ub(const vector<T>& v,const T& x){ return upper_bound(v.begin(),v.end(),x)-v.begin(); }
 template<class T> T ceil_div(T a,T b){ return (a+b-1)/b; }
+template<class T> T floor_div(T a, T b) { return a / b - ((a ^ b) < 0 && a % b); }
 
 ll powmod(ll a,ll e,ll mod){
     ll r=1;
