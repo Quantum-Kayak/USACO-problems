@@ -36,6 +36,16 @@
 using namespace std;
 
 // =====================
+// ===  Macro Shortcuts  ===
+// =====================
+#define pb push_back
+#define all(x) x.begin(), x.end()
+#define f first
+#define s second
+#define sz(x) (int)(x).size()
+#define each(a, x) for (auto& a : x)
+
+// =====================
 // ===  Type Aliases and Typedefs  ===
 // =====================
 using ll = long long;
@@ -364,16 +374,6 @@ vi prefix_function(const string& s) {
     }
     return pi;
 }
-
-// =====================
-// ===  Macro Shortcuts  ===
-// =====================
-#define pb push_back
-#define all(x) x.begin(), x.end()
-#define f first
-#define s second
-#define sz(x) (int)(x).size()
-#define each(a, x) for (auto& a : x)
 
 // =====================
 // ===  Disjoint Set Union (DSU)  ===
