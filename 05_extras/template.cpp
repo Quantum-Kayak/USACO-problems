@@ -296,15 +296,6 @@ ll powmod(ll a,ll e,ll mod){
 }
 
 // =====================
-// ===  Custom Hashing  ===
-// =====================
-struct pair_hash {
-    size_t operator()(pii p) const {
-        return ((uint64_t)p.first << 32) ^ p.second;
-    }
-};
-
-// =====================
 // ===  Macro Shortcuts  ===
 // =====================
 #define pb push_back
@@ -535,7 +526,7 @@ int knapsack_1D(int n, int W, const vi &wt, const vi &val) {
 }
 
 // =====================
-// ===  Hashes  ===
+// ===  Custome Hashes  ===
 // =====================
 
 struct custom_hash {
@@ -596,6 +587,12 @@ struct DoubleHash {
         int x1 = (h1[r + 1] - 1LL * h1[l] * p1[r - l + 1] % MOD1 + MOD1) % MOD1;
         int x2 = (h2[r + 1] - 1LL * h2[l] * p2[r - l + 1] % MOD2 + MOD2) % MOD2;
         return {x1, x2};
+    }
+};
+
+struct pair_hash {
+    size_t operator()(pii p) const {
+        return ((uint64_t)p.first << 32) ^ p.second;
     }
 };
 
