@@ -3,6 +3,7 @@
 // =====================
 // ===  Standard Headers  ===
 // =====================
+#include <chrono>       // for the hash
 #include <iostream>     // standard I/O
 #include <cstdio>       // C-style I/O
 #include <cstdlib>      // standard library stuff
