@@ -271,10 +271,10 @@ template<class T> T ceil_div(T a,T b){ return (a+b-1)/b; }
 template<class T> T floor_div(T a, T b) { return a / b - ((a ^ b) < 0 && a % b); }
 
 // string slices
-vector<string> chunk_str(const string& s, int k) {
+vector<string> chunk_string(const string& s, int k) {
     vector<string> chunks;
-    for (int i = 0; i + k <= (int)s.size(); i += k) {
-        chunks.push_back(s.substr(i, k));
+    for (int i = 0; i < (int)s.size(); i += k) {
+        chunks.push_back(s.substr(i, min(k, (int)s.size() - i)));
     }
     return chunks;
 }
