@@ -135,7 +135,7 @@ Now with hyperlinks that don't feel like a Linux error log.
 - [x] [Fruit Feast](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/easy/fruitfeast/fruitfeast.cpp)
 - [ ] [Money Sums]
 - [ ] [Book Shop]
-- [ ] [Two Sets II]
+- [x] [Two Sets II](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/easy/twosetsII/twosetsII.cpp)
 #### Very Easy
 
 - [x] [Dice Combinations](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/veryeasy/dicecombinations/dicecombinations.cpp) 
