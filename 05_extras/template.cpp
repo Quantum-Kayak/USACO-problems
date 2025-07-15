@@ -606,6 +606,20 @@ int unbounded(int x, vi coins) {
     return dp[x];
 }
 
+int two_sets(int n) {
+    int S = n*(n+1)/2;
+    if (S % 2) return 0;
+    int target = S / 2;
+
+    vector<int> dp(target + 1);
+    dp[0] = 1;
+    for (int i = 1; i <= n; ++i)
+        for (int j = target; j >= i; --j)
+            dp[j] = (dp[j] + dp[j - i]) % MOD;
+
+    return dp[target] * modinv(2) % MOD;
+}
+
 // =====================
 // ===  Custom Hashes  ===
 // =====================
