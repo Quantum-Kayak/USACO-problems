@@ -595,6 +595,17 @@ int knapsack_1D(int n, int W, const vi &wt, const vi &val) {
     return dp[W];
 }
 
+// Unbounded Version
+int unbounded(int x, vi coins) {
+    vector<int> dp(x + 1, 0);
+    dp[0] = 1;
+    for (int i = 1; i <= x; ++i)
+        for (int c : coins)
+            if (i - c >= 0)
+                dp[i] = (dp[i] + dp[i - c]) % MOD;
+    return dp[x];
+}
+
 // =====================
 // ===  Custom Hashes  ===
 // =====================
