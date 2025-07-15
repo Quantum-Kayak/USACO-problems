@@ -28,18 +28,13 @@ Now with hyperlinks that don't feel like a Linux error log.
 - [x] [Milk Factory](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/starred/hard/milkfactory/milkfactory.cpp)
 - [x] [Photoshoot](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/starred/hard/photoshoot/photoshoot.cpp)
 
-#### Insane
+#### Very Hard
 
-- [x] [Race](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/starred/insane/race/race.cpp)
+- [x] [Race](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/starred/veryhard/race/race.cpp)
 
 ---
 
 ### ❌ Unstarred
-
-#### Very Easy
-
-- [x] [Hoofball](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/veryeasy/hoofball/hoofball.cpp)
-- [x] [Roundabout Rounding](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/veryeasy/roundaboutrounding/roundaboutrounding.cpp)
 
 #### Easy
 
@@ -47,9 +42,9 @@ Now with hyperlinks that don't feel like a Linux error log.
 - [x] [Associative Array](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/associativearray/associativearray.cpp)
 - [x] [Astral Superpositioning](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/astralsuperpositioning/astralsuperpositioning.cpp)
 - [x] [Making MEXes](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/makingmexes/makingmexes.cpp)
-- [x] [Mixing Milk](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/mixingmilk/mixingmilk.cpp)
-- [x] [The Bovine Shuffle](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/thebovineshuffle/thebovineshuffle.cpp)
-- [x] [The Bucket List](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/thebucketlist/thebucketlist.cpp)
+- [x] [Mixing Milk](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/mixingmilk/mixingmilkprac2.cpp)
+- [x] [The Bovine Shuffle](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/thebovineshuffle/prac1thebovineshuffle.cpp)
+- [x] [The Bucket List](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/thebucketlist/thebucketlistprac2.cpp)
 - [x] [The Lost Cow](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/thelostcow/thelostcow.cpp)
 - [x] [Word Processor](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/easy/wordprocessor/wordprocessor.cpp)
 
@@ -64,11 +59,15 @@ Now with hyperlinks that don't feel like a Linux error log.
 #### Hard
 
 - [x] [Drought](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/hard/drought/drought.cpp)
-- [x] [Hoof, Paper, Scissors Minus One](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/hard/hoofpapersscissorsminusone/hoofpapersscissorsminusone.cpp)
+- [x] [Hoof, Paper, Scissors Minus One](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/hard/hoofpapersscissorsminusone/WIP.cpp)
 - [x] [Leaders](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/hard/leaders/leaders.cpp)
-- [x] [Milk Measurement](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/hard/milkmeasurement/milkmeasurement.cpp)
+- [x] [Milk Measurement](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/hard/milkmeasurement/prac1mikmeasurement.cpp)
 - [x] [The Great Revegetation](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/hard/thegreatrevegetation/thegreatrevegetation.cpp)
 
+#### Very Easy
+
+- [x] [Hoofball](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/veryeasy/hoofball/hoofball.cpp)
+- [x] [Roundabout Rounding](https://github.com/Quantum-Kayak/USACO-problems/blob/main/bronze/unstarred/veryeasy/roundaboutrounding/roundaboutrounding.cpp)
 ---
 
 ## 🥈 Silver
@@ -78,7 +77,8 @@ Now with hyperlinks that don't feel like a Linux error log.
 #### Easy
 
 - [x] [Fence Planning](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/starred/easy/fenceplanning/fenceplanning.cpp)
-- [x] [Milk Visits](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/starred/easy/milkvisits/milkvisits.cpp)
+- [x] [Milk Visits (BFS)](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/starred/easy/milkvisits/milkvisitsBFS.cpp)
+- [x] [Milk Visits (DFS)](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/starred/easy/milkvisits/milkvisitsDFS.cpp)
 - [x] [Moocast](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/starred/easy/moocast/moocast.cpp)
 - [x] [Moovie Mooving (Mootube)](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/starred/easy/mootube/mootube.cpp)
 
@@ -107,12 +107,34 @@ Now with hyperlinks that don't feel like a Linux error log.
 - [x] [Badge](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/unstarred/veryeasy/badge/badge.cpp)
 - [x] [Breed Counting](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/unstarred/veryeasy/breedcounting/breedcounting.cpp)
 - [x] [Static Range Sum](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/unstarred/veryeasy/staticrangesum/staticrangesum.cpp)
-- [x] [Studying Algorithms](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/unstarred/veryeasy/studyingalgorithms/studyingalgorithms.cpp)
+- [x] [Studying Algorithms](https://github.com/Quantum-Kayak/USACO-problems/blob/main/silver/unstarred/veryeasy/studyingalgorithms/studyingalgorithmns.cpp)
 
-## 🥇Gold
+---
+
+## 🥇 Gold
+
+### ⭐ Starred
+
+#### Easy
+
+- [x] [Coin Combinations I](https://github.com/Quantum-Kayak/USACO-problems/blob/main/gold/starred/easy/coincombinationsI/coincombinationsI.cpp)
+- [x] [Coin Combinations II](https://github.com/Quantum-Kayak/USACO-problems/blob/main/gold/starred/easy/coincombinationsII/coincombinationsII.cpp)
+
+#### Very Easy
+
+- [x] [Dice Combinations](https://github.com/Quantum-Kayak/USACO-problems/blob/main/gold/starred/veryeasy/dicecombinations/dicecombinations.cpp) 
+- [x] [Minimizing Coins](https://github.com/Quantum-Kayak/USACO-problems/blob/main/gold/starred/veryeasy/minimizingcoins/minimizingcoins.cpp)
+
+---
 
 ### ❌ Unstarred
 
+#### Easy
+
+- [x] [Frog 1](https://github.com/Quantum-Kayak/USACO-problems/blob/main/gold/unstarred/easy/frog1/frog1.cpp)
+- [x] [Fruit Feast](https://github.com/Quantum-Kayak/USACO-problems/blob/main/gold/unstarred/easy/fruitfeast/fruitfeast.cpp)
+
 #### Very Easy
-- [x] [Minimizing Coins](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/veryeasy/minimizingcoins/minimizingcoins.cpp)
-- [x] [Dice Combinations](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/veryeasy/dicecombinations/dicecombinations.cpp)
+
+- [x] [Dice Combinations](https://github.com/Quantum-Kayak/USACO-problems/blob/main/gold/unstarred/veryeasy/dicecombinations/dicecombinations.cpp) 
+- [x] [Finding Periods](https://github.com/Quantum-Kayak/USACO-problems/blob/main/gold/unstarred/veryeasy/findingperiods/findingperiods.cpp) 
