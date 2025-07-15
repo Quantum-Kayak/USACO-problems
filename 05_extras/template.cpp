@@ -375,6 +375,10 @@ vi prefix_function(const string& s) {
     return pi;
 }
 
+ll modinv(ll a, ll m = MOD) {
+    return powmod(a, m - 2, m);  // Assumes m is prime
+}
+
 // =====================
 // ===  Disjoint Set Union (DSU)  ===
 // =====================
