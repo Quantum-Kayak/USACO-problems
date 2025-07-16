@@ -773,7 +773,7 @@ int main() {
     }
     
     double lo = 0.0, hi = 1e4, ans = 0.0;
-    for (int iter = 0; iter < 100; ++iter) {
+    while (hi - lo > 1e-7) {
         double mid = (lo + hi) / 2;
         if (check(mid, cows)) {
             ans = mid;
@@ -782,7 +782,7 @@ int main() {
             lo = mid;
         }
     }
+    
     cout << fixed << setprecision(3) << ans << '\n';
-    flush();
     return 0;
 }
