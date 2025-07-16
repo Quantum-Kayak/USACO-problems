@@ -128,6 +128,9 @@ Now with hyperlinks that don't feel like a Linux error log.
 ---
 
 ### ❌ Unstarred
+#### Normal
+
+- [x] [Sabotage](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/normal/sabotage/sabotage.cpp)
 
 #### Easy
 
