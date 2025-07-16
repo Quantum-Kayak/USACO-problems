@@ -1,6 +1,5 @@
 # USACO template🐮
 ![C++ Main](https://img.shields.io/badge/-main-blue?logo=cplusplus&logoColor=white&label=C%2B%2B)
-![brain](https://img.shields.io/badge/brain-undefined-blue)
 
 
 ## Raw
