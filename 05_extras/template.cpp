@@ -242,28 +242,15 @@ inline void w_ll(long long x) {
     while (len--) outbuf[outp++] = tmp[len];
 }
 
+inline void w_double(double x, int precision = 3) {
+    char buf[64];
+    sprintf(buf, "%.*f", precision, x);  // e.g. 3 -> 2.667
+    w_string(buf);
+}
+
 inline void flush() {
     fwrite(outbuf, 1, outp, stdout);
     outp = 0;
-}
-inline void w_double(double x, int precision = 3) {
-    if (x < 0) {
-        w_char('-');
-        x = -x;
-    }
-
-    long long int_part = (long long)x;
-    double frac = x - int_part;
-
-    w_ll(int_part);
-    w_char('.');
-
-    for (int i = 0; i < precision; ++i) {
-        frac *= 10;
-        int digit = (int)frac;
-        w_char('0' + digit);
-        frac -= digit;
-    }
 }
 
 // =====================
