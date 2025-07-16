@@ -437,6 +437,13 @@ struct DSU {
     }
 };
 
+double average(const vector<int>& nums) {
+    if (nums.empty()) return 0.0;
+    long long sum = 0;
+    for (int x : nums) sum += x;
+    return static_cast<double>(sum) / nums.size();
+}
+
 // =====================
 // === Binary Search Utilities ===
 // =====================
