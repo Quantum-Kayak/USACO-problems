@@ -489,19 +489,18 @@ vector<vector<pair<int, int>>> adj_weighted;
 vector<vector<int>> adj_unweighted;
 
 void build_graph(bool weighted) {
-    cin >> n >> m;
+    n = r_int();
+    m = r_int();
     if (weighted)
         adj_weighted.assign(n, {});
     else
         adj_unweighted.assign(n, {});
 
     for (int i = 0; i < m; ++i) {
-        int u, v;
-        cin >> u >> v;
+        int u = r_int(), v = r_int();
 
         if (weighted) {
-            int w;
-            cin >> w;
+            int w = r_int();
             adj_weighted[u].push_back({v, w});
             adj_weighted[v].push_back({u, w}); // if undirected
         } else {
