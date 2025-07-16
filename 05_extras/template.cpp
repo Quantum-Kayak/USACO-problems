@@ -78,35 +78,11 @@ const int MOD = MOD1;
 // =====================
 // === Fast I/O Setup ===
 // =====================
-ifstream fin;
-ofstream fout;
-
-#ifdef LOCAL
-    #define USE_FILE_IO
-#endif
-
 void setIO(const string &name = "") {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
 #ifdef USE_FILE_IO
     if (!name.empty()) {
-        fin.open(name + ".in");
-        fout.open(name + ".out");
-
-        if (fin) {
-            cin.rdbuf(fin.rdbuf());  // Redirect cin to file
-        } else {
-            cout << "\u26A0\uFE0F  Could not open " << name << ".in\n";
-        }
-
-        if (fout) {
-            cout.rdbuf(fout.rdbuf()); // Redirect cout to file
-        } else {
-            cout << "\u26A0\uFE0F  Could not open " << name << ".out\n";
-        }
-    } else {
-        cout << "\u26A0\uFE0F  No filename provided. Using standard input/output.\n";
+        freopen((name + ".in").c_str(), "r", stdin);
+        freopen((name + ".out").c_str(), "w", stdout);
     }
 #endif
 }
