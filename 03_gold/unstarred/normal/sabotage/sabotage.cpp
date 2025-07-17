@@ -1,4 +1,4 @@
-#define LOCAL
+#define USE_FILE_IO
 
 // =====================
 // ===  Standard Headers  ===
@@ -78,35 +78,11 @@ const int MOD = MOD1;
 // =====================
 // === Fast I/O Setup ===
 // =====================
-ifstream fin;
-ofstream fout;
-
-#ifdef LOCAL
-    #define USE_FILE_IO
-#endif
-
 void setIO(const string &name = "") {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
 #ifdef USE_FILE_IO
     if (!name.empty()) {
-        fin.open(name + ".in");
-        fout.open(name + ".out");
-
-        if (fin) {
-            cin.rdbuf(fin.rdbuf());  // Redirect cin to file
-        } else {
-            cout << "\u26A0\uFE0F  Could not open " << name << ".in\n";
-        }
-
-        if (fout) {
-            cout.rdbuf(fout.rdbuf()); // Redirect cout to file
-        } else {
-            cout << "\u26A0\uFE0F  Could not open " << name << ".out\n";
-        }
-    } else {
-        cout << "\u26A0\uFE0F  No filename provided. Using standard input/output.\n";
+        freopen((name + ".in").c_str(), "r", stdin);
+        freopen((name + ".out").c_str(), "w", stdout);
     }
 #endif
 }
@@ -240,6 +216,12 @@ inline void w_ll(long long x) {
         x /= 10;
     }
     while (len--) outbuf[outp++] = tmp[len];
+}
+
+inline void w_double(double x, int precision = 3) {
+    char buf[64];
+    sprintf(buf, "%.*f", precision, x);  // e.g. 3 -> 2.667
+    w_string(buf);
 }
 
 inline void flush() {
@@ -741,48 +723,39 @@ double average(const vector<int>& nums) {
 // =====================
 // ===  Main Driver  ===
 // =====================
-
-bool check(double x, const vector<int>& a) {
-    int n = a.size();
+bool check(double x, const vi& milk) {
+    int n = sz(milk);
     vector<double> b(n);
-    for (int i = 0; i < n; ++i) {
-        b[i] = a[i] - x;
+    for (int i = 0; i < n; ++i)
+        b[i] = milk[i] - x;
+
+    double curr = 0.0, max_sub = -1e18;
+
+    for (int i = 1; i < n - 1; ++i) {
+        curr += b[i];
+        max_sub = max(max_sub, curr);
+        if (curr < 0) curr = 0;
     }
 
-    double total = 0.0;
-    for (double val : b) total += val;
-
-    // Now find the **maximum subarray sum** in b[1..n-2]
-    double max_sub = -1e18, current = 0.0;
-    for (int i = 1; i <= n - 2; ++i) {
-        current += b[i];
-        max_sub = max(max_sub, current);
-        if (current < 0) current = 0;
-    }
-
+    double total = accumulate(all(b), 0.0);
     return total - max_sub <= 1e-8;
 }
-
 int main() {
-    setIO("sabotage"); // Change filename as needed for file I/O
+    setIO("sabotage");
     int n = r_int();
-    vi cows(n);
-    
-    for (int i = 0; i < n; i++) {
-        cows[i] = r_int();
-    }
-    
-    double lo = 0.0, hi = 1e4, ans = 0.0;
-    while (hi - lo > 1e-7) {
+    vi milk(n);
+    for (int i = 0; i < n; ++i)
+        milk[i] = r_int();
+
+    double lo = 0.0, hi = 1e4;
+    for (int it = 0; it < 100; ++it) {
         double mid = (lo + hi) / 2;
-        if (check(mid, cows)) {
-            ans = mid;
-            hi = mid;
-        } else {
-            lo = mid;
-        }
+        if (check(mid, milk)) hi = mid;
+        else lo = mid;
     }
-    
-    cout << fixed << setprecision(3) << ans << '\n';
+
+    w_double(hi, 3);
+    w_char('\n');
+    flush();
     return 0;
 }
