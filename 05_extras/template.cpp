@@ -79,7 +79,7 @@ const int MOD = MOD1;
 // === Fast I/O Setup ===
 // =====================
 void setIO(const string &name = "") {
-#ifdef USE_FILE_IO
+#ifdef LOCAL
     if (!name.empty()) {
         freopen((name + ".in").c_str(), "r", stdin);
         freopen((name + ".out").c_str(), "w", stdout);
