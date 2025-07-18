@@ -139,6 +139,7 @@ Now with hyperlinks that don't feel like a Linux error log.
 - [ ] [Money Sums]
 - [ ] [Book Shop]
 - [x] [Two Sets II](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/easy/twosetsII/twosetsII.cpp)
+- [x] [Moovie Mooving](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/easy/mooviemooving/mooviemooving.cpp)
 #### Very Easy
 
 - [x] [Dice Combinations](https://github.com/Quantum-Kayak/USACO-problems/blob/main/03_gold/unstarred/veryeasy/dicecombinations/dicecombinations.cpp) 
