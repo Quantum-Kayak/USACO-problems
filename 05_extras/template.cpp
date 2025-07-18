@@ -44,6 +44,7 @@ using namespace std;
 #define s second
 #define sz(x) (int)(x).size()
 #define each(a, x) for (auto& a : x)
+#define for_subsets(sub, mask) for (int sub = mask; sub; sub = (sub - 1) & mask)
 
 // =====================
 // ===  Type Aliases and Typedefs  ===
@@ -550,69 +551,6 @@ void dijkstra(int src) {
 }
 
 // =====================
-// ===  0/1 Knapsack DP ===
-// =====================
-
-// 2D Version — reconstructable
-int knapsack_2D(int n, int W, const vi &wt, const vi &val, vi &items_taken) {
-    vvi dp(n + 1, vi(W + 1, 0));
-
-    for (int i = 1; i <= n; ++i) {
-        for (int w = 0; w <= W; ++w) {
-            dp[i][w] = dp[i - 1][w];
-            if (wt[i - 1] <= w)
-                chmax(dp[i][w], val[i - 1] + dp[i - 1][w - wt[i - 1]]);
-        }
-    }
-
-    // Optional: Reconstruct taken items
-    items_taken.clear();
-    int w = W;
-    for (int i = n; i >= 1; --i) {
-        if (dp[i][w] != dp[i - 1][w]) {
-            items_taken.pb(i - 1);  // item index
-            w -= wt[i - 1];
-        }
-    }
-    reverse(all(items_taken));
-    return dp[n][W];
-}
-
-// 1D Version — fast & memory-efficient
-int knapsack_1D(int n, int W, const vi &wt, const vi &val) {
-    vi dp(W + 1, 0);
-    for (int i = 0; i < n; ++i)
-        for (int w = W; w >= wt[i]; --w)
-            chmax(dp[w], val[i] + dp[w - wt[i]]);
-    return dp[W];
-}
-
-// Unbounded Version
-int unbounded(int x, vi coins) {
-    vector<int> dp(x + 1, 0);
-    dp[0] = 1;
-    for (int i = 1; i <= x; ++i)
-        for (int c : coins)
-            if (i - c >= 0)
-                dp[i] = (dp[i] + dp[i - c]) % MOD;
-    return dp[x];
-}
-
-int two_sets(int n) {
-    int S = n*(n+1)/2;
-    if (S % 2) return 0;
-    int target = S / 2;
-
-    vector<int> dp(target + 1);
-    dp[0] = 1;
-    for (int i = 1; i <= n; ++i)
-        for (int j = target; j >= i; --j)
-            dp[j] = (dp[j] + dp[j - i]) % MOD;
-
-    return dp[target] * modinv(2) % MOD;
-}
-
-// =====================
 // ===  Custom Hashes  ===
 // =====================
 
@@ -726,7 +664,165 @@ int range_sum_2D(const vvi& ps, int x1, int y1, int x2, int y2) {
          + ps[x1 - 1][y1 - 1];
 }
 
+// =====================
+// ===  0/1 Knapsack DP ===
+// =====================
 
+// 2D Version — reconstructable
+int knapsack_2D(int n, int W, const vi &wt, const vi &val, vi &items_taken) {
+    vvi dp(n + 1, vi(W + 1, 0));
+
+    for (int i = 1; i <= n; ++i) {
+        for (int w = 0; w <= W; ++w) {
+            dp[i][w] = dp[i - 1][w];
+            if (wt[i - 1] <= w)
+                chmax(dp[i][w], val[i - 1] + dp[i - 1][w - wt[i - 1]]);
+        }
+    }
+
+    // Optional: Reconstruct taken items
+    items_taken.clear();
+    int w = W;
+    for (int i = n; i >= 1; --i) {
+        if (dp[i][w] != dp[i - 1][w]) {
+            items_taken.pb(i - 1);  // item index
+            w -= wt[i - 1];
+        }
+    }
+    reverse(all(items_taken));
+    return dp[n][W];
+}
+
+// 1D Version — fast & memory-efficient
+int knapsack_1D(int n, int W, const vi &wt, const vi &val) {
+    vi dp(W + 1, 0);
+    for (int i = 0; i < n; ++i)
+        for (int w = W; w >= wt[i]; --w)
+            chmax(dp[w], val[i] + dp[w - wt[i]]);
+    return dp[W];
+}
+
+// Unbounded Version
+int unbounded(int x, vi coins) {
+    vector<int> dp(x + 1, 0);
+    dp[0] = 1;
+    for (int i = 1; i <= x; ++i)
+        for (int c : coins)
+            if (i - c >= 0)
+                dp[i] = (dp[i] + dp[i - c]) % MOD;
+    return dp[x];
+}
+
+int two_sets(int n) {
+    int S = n*(n+1)/2;
+    if (S % 2) return 0;
+    int target = S / 2;
+
+    vector<int> dp(target + 1);
+    dp[0] = 1;
+    for (int i = 1; i <= n; ++i)
+        for (int j = target; j >= i; --j)
+            dp[j] = (dp[j] + dp[j - i]) % MOD;
+
+    return dp[target] * modinv(2) % MOD;
+}
+
+// =====================
+// ===    Bitmask    ===
+// =====================
+
+int mask(int n, const vi& cost) {
+    const int INF = INF32;
+    vi dp(1 << n, INF);
+    dp[0] = 0;
+    for (int mask = 1; mask < (1 << n); ++mask) {
+        for (int i = 0; i < n; ++i) {
+            if (mask & (1 << i)) {
+                int prev = mask ^ (1 << i);
+                chmin(dp[mask], dp[prev] + cost[i]);
+            }
+        }
+    }
+    return dp[(1 << n) - 1];
+}
+
+int tsp(int n, const vvi& cost) {
+    const int INF = INF32;
+    vvi dp(1 << n, vi(n, INF));
+    dp[1][0] = 0;
+    for (int mask = 1; mask < (1 << n); ++mask) {
+        for (int u = 0; u < n; ++u) {
+            if (!(mask & (1 << u))) continue;
+            for (int v = 0; v < n; ++v) {
+                if (mask & (1 << v)) continue;
+                chmin(dp[mask | (1 << v)][v], dp[mask][u] + cost[u][v]);
+            }
+        }
+    }
+    int ans = INF;
+    for (int i = 0; i < n; ++i)
+        chmin(ans, dp[(1 << n) - 1][i] + cost[i][0]);
+    return ans;
+}
+
+int assignment(int n, const vvi& cost) {
+    const int INF = INF32;
+    vi dp(1 << n, INF);
+    dp[0] = 0;
+    for (int mask = 0; mask < (1 << n); ++mask) {
+        int i = __builtin_popcount(mask);
+        for (int j = 0; j < n; ++j) {
+            if (!(mask & (1 << j)))
+                chmin(dp[mask | (1 << j)], dp[mask] + cost[i][j]);
+        }
+    }
+    return dp[(1 << n) - 1];
+}
+
+int cover(int n, const vi& valid) {
+    const int INF = INF32;
+    vi dp(1 << n, INF);
+    dp[0] = 0;
+    for (int mask = 1; mask < (1 << n); ++mask) {
+        for_subsets(sub, mask)
+            if (valid[sub])
+                chmin(dp[mask], dp[mask ^ sub] + 1);
+    }
+    return dp[(1 << n) - 1];
+}
+
+int shortest(int n, const vvi& adj) {
+    const int INF = INF32;
+    vi dist(1 << n, INF);
+    queue<int> q;
+    dist[0] = 0;
+    q.push(0);
+
+    while (!q.empty()) {
+        int mask = q.front(); q.pop();
+        for (int i = 0; i < n; ++i) {
+            for (int j : adj[i]) {
+                int next = mask | (1 << j);
+                if (chmin(dist[next], dist[mask] + 1))
+                    q.push(next);
+            }
+        }
+    }
+    return dist[(1 << n) - 1];
+}
+
+int bit_dp(int pos, int tight, int mask, const vi& bits, vvi& memo) {
+    if (pos == -1) return 1;
+    if (memo[pos][mask] != -1) return memo[pos][mask];
+
+    int limit = tight ? bits[pos] : 1;
+    int res = 0;
+    for (int b = 0; b <= limit; ++b) {
+        if (mask & (1 << b)) continue; // some constraint
+        res += bit_dp(pos - 1, tight && (b == limit), mask | (1 << b), bits, memo);
+    }
+    return memo[pos][mask] = res;
+}
 // =====================
 // ===  Main Driver  ===
 // =====================
