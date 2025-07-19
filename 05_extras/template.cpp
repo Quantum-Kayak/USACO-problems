@@ -731,6 +731,24 @@ int two_sets(int n) {
 // ===    Bitmask    ===
 // =====================
 
+int count_paths(int n, const vector<vector<int>>& graph) {
+    const int MOD = 1e9 + 7;
+    vector<vector<int>> dp(1 << n, vector<int>(n, 0));
+    dp[1][0] = 1; // Only city 1 (0-indexed) is visited
+
+    for (int mask = 0; mask < (1 << n); ++mask) {
+        for (int u = 0; u < n; ++u) {
+            if (!(mask & (1 << u))) continue;
+            for (int v : graph[u]) {
+                if (mask & (1 << v)) continue;
+                dp[mask | (1 << v)][v] = (dp[mask | (1 << v)][v] + dp[mask][u]) % MOD;
+            }
+        }
+    }
+
+    return dp[(1 << n) - 1][n - 1]; // All cities visited, ending at city n (index n-1)
+}
+
 int mask(int n, const vi& cost) {
     const int INF = INF32;
     vi dp(1 << n, INF);
