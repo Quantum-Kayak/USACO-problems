@@ -21,6 +21,9 @@ USACO-problems/
 ├── bronze/
 │   ├── starred/
 │   │   ├── easy/
+│   │   │   ├── problemname/
+│   │   │       ├── problemname.cpp/
+│   │   │       └── problemname.md/
 │   │   ├── normal/
 │   │   ├── hard/
 │   │   └── insane/
