@@ -4,21 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <stack>
-#include <deque>
-#include <algorithm>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <string>
-#include <cmath>
-#include <climits>
-#include <iomanip>
-#include <cassert>
-#include <fstream>
-#include <bitset>
-#include <numeric>
 
 using namespace std;
 
@@ -50,11 +35,6 @@ void setIO(const string& name = "") {
         freopen((name + ".out").c_str(), "w", stdout);
     }
 }
-
-// Debug (remove or disable before submitting)
-#define dbg(x) cerr << #x << " = " << (x) << '\n';
-#define dbg2(x, y) cerr << #x << " = " << (x) << ", " << #y << " = " << (y) << '\n';
-
 // Macros
 #define pb push_back
 #define all(x) x.begin(), x.end()
