@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <set>
 
 using namespace std;
 
@@ -46,8 +47,7 @@ int main() {
     int n, m, a, b;
     cin >> n >> m;
     vector<vi> adj(n + 1);
-    N = n;
-    vi color(N + 1, 0);
+    vi color(n + 1, 0);
     for (int i = 1; i <= m; i++) {
         cin >> a >> b;
         adj[b].pb(a);
