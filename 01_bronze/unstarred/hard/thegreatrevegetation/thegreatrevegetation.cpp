@@ -61,37 +61,6 @@ void setIO(const string& name = "") {
 #define f first
 #define s second
 
-int N;
-
-int dfs(int node, int current_number, vector<vector<int>>& graph, vector<int>& color) {
-    if (node > N) {
-        return current_number;
-    }
-
-    int min_result = INT_MAX;
-
-    for (int c = 1; c <= 4; ++c) {
-        bool valid = true;
-
-        for (int neighbor : graph[node]) {
-            if (color[neighbor] == c) {
-                valid = false;
-                break;
-            }
-        }
-
-        if (valid) {
-            color[node] = c;
-            int result = dfs(node + 1, current_number * 10 + c, graph, color);
-            min_result = min(min_result, result);
-            color[node] = 0; 
-        }
-    }
-
-    return min_result;
-}
-
-
 int main() {
     setIO("revegetate");  // Replace with actual filename
     int n, m, a, b;
@@ -104,9 +73,21 @@ int main() {
         adj[b].pb(a);
         adj[a].pb(b);
     }
-    int result = dfs(1, 0, adj, color);
+    for (int i = 1; i <= n; ++i) {
+        set<int> used;
+        for (int neighbor : adj[i]) {
+            if (color[neighbor]) used.insert(color[neighbor]);
+        }
+        for (int g = 1; g <= 4; ++g) {
+            if (!used.count(g)) {
+                color[i] = g;
+                break;
+            }
+        }
+    }
     
-    cout << result << '\n';
-
+    for (int i = 1; i <= n; ++i)
+        cout << color[i];
+    cout << '\n';
     return 0;
 }
