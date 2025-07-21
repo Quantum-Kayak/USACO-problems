@@ -1,14 +1,13 @@
 # 🐮 USACO Progress Tracker
 
-[![USACO Silver Training](https://img.shields.io/badge/USACO-Silver-green)](https://youtu.be/dQw4w9WgXcQ)
-
-
 Tracking my journey through cow puzzles, time limits, and increasingly unstable filenames.  
 Now with hyperlinks that don't feel like a Linux error log.
 
 ---
 
 ## 🟫 01_bronze
+
+[![USACO Bronze Training](https://img.shields.io/badge/USACO-Bronze-%23cd7f32)](https://pointerpointer.com/)
 
 ### ⭐ Starred
 
@@ -75,6 +74,8 @@ Now with hyperlinks that don't feel like a Linux error log.
 
 ## 🥈 02_silver
 
+[![USACO Silver Training](https://img.shields.io/badge/USACO-Silver-green)](https://youtu.be/dQw4w9WgXcQ)
+
 ### ⭐ Starred
 
 #### Easy
@@ -115,6 +116,8 @@ Now with hyperlinks that don't feel like a Linux error log.
 ---
 
 ## 🥇 03_gold
+
+[![USACO Gold Training](https://img.shields.io/badge/USACO-Gold-%23ffd700)](https://heeeeeeeey.com/)
 
 ### ⭐ Starred
 
