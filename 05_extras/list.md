@@ -101,7 +101,7 @@ Now with hyperlinks that don't feel like a Linux error log.
 
 - [x] [Berry Picking](https://github.com/Quantum-Kayak/USACO-problems/blob/main/02_silver/unstarred/normal/berrypicking/berrypicking.cpp)
 - [x] [Counting Haybales](https://github.com/Quantum-Kayak/USACO-problems/blob/main/02_silver/unstarred/normal/countinghaybales/countinghaybales.cpp)
-
+- [x] [Cow Checkups](https://github.com/Quantum-Kayak/USACO-problems/blob/main/02_silver/unstarred/normal/cowcheckups/cowcheckups.cpp)
 #### Very Easy
 
 - [x] [Badge](https://github.com/Quantum-Kayak/USACO-problems/blob/main/02_silver/unstarred/veryeasy/badge/badge.cpp)
