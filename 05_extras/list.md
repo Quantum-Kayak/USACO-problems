@@ -1,5 +1,8 @@
 # 🐮 USACO Progress Tracker
 
+[![USACO Silver Training](https://img.shields.io/badge/USACO-Silver-green)](https://youtu.be/dQw4w9WgXcQ)
+
+
 Tracking my journey through cow puzzles, time limits, and increasingly unstable filenames.  
 Now with hyperlinks that don't feel like a Linux error log.
 
