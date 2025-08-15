@@ -3,36 +3,21 @@
 // =====================
 // ===  Standard Headers  ===
 // =====================
-#include <chrono>       // for the hash
-#include <iostream>     // standard I/O
-#include <cstdio>       // C-style I/O
-#include <cstdlib>      // standard library stuff
-#include <cstring>      // C-style strings
-#include <string>       // C++ strings
-#include <cmath>        // math functions
-#include <algorithm>    // sort, binary_search, etc.
-#include <vector>       // dynamic arrays
-#include <deque>        // double-ended queues
-#include <queue>        // FIFO, priority queues
-#include <stack>        // LIFO stack
-#include <map>          // associative array (balanced BST)
-#include <unordered_map>// hash table map
-#include <set>          // balanced BST set
-#include <unordered_set>// hash set
-#include <bitset>       // fixed-size bit arrays
-#include <utility>      // pairs
-#include <tuple>        // tuples
-#include <climits>      // INT_MAX, etc.
-#include <limits>       // numeric_limits
-#include <cassert>      // assert
-#include <functional>   // function objects (functors, lambdas)
-#include <array>        // fixed-size array with bounds checking
-#include <fstream>      // file I/O (for testing maybe)
-#include <iomanip>      // manipulators for I/O formatting
-#include <numeric>      // accumulate, iota, etc.
-#include <cctype>       // char functions like isdigit, isalpha, etc.
-#include <cstdint>
-
+#include <iostream>         // cin, cout, endl
+#include <fstream>          // ifstream, ofstream (file I/O)
+#include <vector>           // vector
+#include <string>           // string
+#include <algorithm>        // sort, max, min, lower_bound, upper_bound
+#include <map>              // map
+#include <unordered_map>    // unordered_map
+#include <set>              // set
+#include <unordered_set>    // unordered_set
+#include <queue>            // queue, priority_queue
+#include <stack>            // stack
+#include <cmath>            // abs, sqrt, pow
+#include <climits>          // INT_MAX, INT_MIN
+#include <cstring>          // memset, memcpy
+#include <numeric>          // accumulate, gcd, lcm
 using namespace std;
 
 // =====================
