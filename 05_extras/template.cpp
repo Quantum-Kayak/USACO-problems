@@ -184,6 +184,5 @@ void solve() {
 
 int main() {
     setIO(); // Change filename as needed for file I/O
-    flush();
     return 0;
 }
