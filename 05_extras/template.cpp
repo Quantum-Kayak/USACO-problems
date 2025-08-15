@@ -184,5 +184,8 @@ void solve() {
 
 int main() {
     setIO(); // Change filename as needed for file I/O
+    int t = 1;
+    //cin >> t;
+    while (t--)
     return 0;
 }
