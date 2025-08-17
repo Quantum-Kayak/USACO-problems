@@ -165,15 +165,6 @@ int binary_search_last_true(int lo, int hi, Func check) {
     return check(lo) ? lo : lo - 1;
 };
 
-// Example use-case for placeholder check
-// Modify this based on the problem you are solving
-bool check(int x) {
-    // For example:
-    // return (x * x >= target);  // Binary search square root
-    // return (can_complete_in_time(x));  // Greedy scheduling
-    return true; // default stub — always true (useless but compiles)
-};
-
 // =====================
 // ===  Main Driver  ===
 // =====================
