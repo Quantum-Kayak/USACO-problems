@@ -169,10 +169,6 @@ int binary_search_last_true(int lo, int hi, Func check) {
 // ===  Main Driver  ===
 // =====================
 
-void solve() {
-    // your logic goes here
-}
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
