@@ -61,14 +61,13 @@ const int MOD = MOD1;
 // =====================
 // === Fast I/O Setup ===
 // =====================
-void setIO(const string &name = "") {
-#ifdef LOCAL
+void setIO(const string &name) {
     if (!name.empty()) {
         freopen((name + ".in").c_str(), "r", stdin);
         freopen((name + ".out").c_str(), "w", stdout);
     }
-#endif
 }
+
 
 // =====================
 // ===  Helper Functions  ===
