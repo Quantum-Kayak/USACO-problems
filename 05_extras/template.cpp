@@ -61,13 +61,28 @@ const int MOD = MOD1;
 // =====================
 // === Fast I/O Setup ===
 // =====================
-void setIO(const string &name) {
-    if (!name.empty()) {
-        freopen((name + ".in").c_str(), "r", stdin);
-        freopen((name + ".out").c_str(), "w", stdout);
+
+void setIO(const std::string& filename = "") {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    if (!filename.empty()) {
+        static std::ifstream fin(filename + ".in");
+        static std::ofstream fout(filename + ".out");
+
+        if (!fin.is_open()) {
+            std::cerr << "Error: Could not open input file: " << filename << ".in\n";
+            std::exit(EXIT_FAILURE);
+        }
+        if (!fout.is_open()) {
+            std::cerr << "Error: Could not open output file: " << filename << ".out\n";
+            std::exit(EXIT_FAILURE);
+        }
+
+        std::cin.rdbuf(fin.rdbuf());
+        std::cout.rdbuf(fout.rdbuf());
     }
 }
-
 // =====================
 // ===  Helper Functions  ===
 // =====================
