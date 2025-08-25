@@ -180,6 +180,10 @@ int binary_search_last_true(int lo, int hi, Func check) {
     return check(lo) ? lo : lo - 1;
 };
 
+// ====================
+// ===== Packages =====
+//=====================
+
 // =====================
 // ===  Main Driver  ===
 // =====================
